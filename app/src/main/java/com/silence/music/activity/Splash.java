@@ -1,4 +1,4 @@
-package com.angel.music.activity;
+package com.silence.music.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
