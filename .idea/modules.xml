@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SilenceMusic.iml" filepath="$PROJECT_DIR$/SilenceMusic.iml" />
       <module fileurl="file://$PROJECT_DIR$/WPMusic.iml" filepath="$PROJECT_DIR$/WPMusic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

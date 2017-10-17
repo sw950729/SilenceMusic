@@ -1,4 +1,4 @@
-package com.angel.music.utils;
+package com.silence.music.utils;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
