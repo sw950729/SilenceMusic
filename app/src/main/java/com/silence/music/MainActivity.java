@@ -1,7 +1,8 @@
-package com.angel.music;
+package com.silence.music;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.angel.music.R;
 
 public class MainActivity extends AppCompatActivity {
 
