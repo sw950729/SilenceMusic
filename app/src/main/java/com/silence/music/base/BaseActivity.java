@@ -15,7 +15,7 @@ import com.silence.music.utils.ActivityStack;
 import com.silence.music.utils.statusbar.StatusBarUtil;
 
 /**
- * @author Administrator
+ * @author tinlone
  */
 
 public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompatActivity implements IView<V> {

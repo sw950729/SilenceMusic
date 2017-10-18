@@ -13,7 +13,7 @@ import com.silence.music.base.ibase.IView;
 
 
 /**
- * Created by Administrator on 2017/5/26 0026.
+ * Created by tinlone on 2017/5/26 0026.
  */
 
 public abstract class BaseFragment<T extends IBasePresenter, V> extends Fragment implements IView<V> {

@@ -10,7 +10,8 @@ import com.silence.music.utils.http.AsyncCallBack;
 import java.util.HashMap;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author tinlone
+ * @date 2017/10/17 0017.
  */
 
 public class TestPresenter implements ITestPresenter {

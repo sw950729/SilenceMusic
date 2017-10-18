@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  *
- * @author Administrator
+ * @author tinlone
  * @date 2016/7/19
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
@@ -40,7 +40,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     /**
      * 错误日志存放路径
      */
-    private static final String ERROR_PATH = "/zhiyi/crash/student_error/";
+    private static final String ERROR_PATH = "/SilenceMusic/crash/";
     /**
      * Debug Log tag
      */

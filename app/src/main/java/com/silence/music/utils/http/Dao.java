@@ -4,7 +4,8 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author zjl
+ * @date 2017/10/17 0017.
  */
 
 public class Dao<T> {

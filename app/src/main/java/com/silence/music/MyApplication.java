@@ -5,7 +5,8 @@ import android.app.Application;
 import com.silence.music.crash.CrashHandler;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author tinlone
+ * @date 2017/10/17 0017.
  */
 
 public class MyApplication extends Application {

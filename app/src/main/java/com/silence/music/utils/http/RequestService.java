@@ -10,7 +10,9 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
 /**
- * Created by Administrator on 2017/6/6 0006.
+ *
+ * @author tinlone
+ * @date 2017/6/6 0006
  */
 
 public interface RequestService {

@@ -1,7 +1,8 @@
 package com.silence.music.bean;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author tinlone
+ * @date 2017/10/17 0017.
  */
 
 public class TestBean {

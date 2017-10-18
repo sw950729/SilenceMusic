@@ -1,11 +1,9 @@
 package com.silence.music.base.ibase;
 
 /**
- * Created by Administrator on 2016/10/11 0011.
  * view层的顶级接口
- * The top interface of the view layer is currently no function
+ * @author tinlone
  */
-
 public interface IView<V> {
 
     /**

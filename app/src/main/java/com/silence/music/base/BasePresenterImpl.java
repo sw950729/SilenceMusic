@@ -7,7 +7,8 @@ import com.silence.music.base.ibase.IView;
 
 
 /**
- * Created by Administrator on 2017/5/25 0025.
+ * @author tinlone
+ * @date 2017/10/17
  */
 
 public class BasePresenterImpl<V extends IView> implements IBasePresenter {

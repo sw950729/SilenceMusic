@@ -1,7 +1,8 @@
 package com.silence.music.utils.http;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author tinlone
+ * @date 2017/10/17 0017.
  */
 
 public interface AsyncCallBack<T> {

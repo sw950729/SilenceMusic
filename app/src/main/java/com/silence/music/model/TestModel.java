@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @author zjl ,@date 2017/10/17 0017.
+ * @author tinlone ,@date 2017/10/17 0017.
  */
 
 public class TestModel implements ITestModel {
