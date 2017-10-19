@@ -5,10 +5,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.angel.music.R;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.silence.music.base.BaseActivity;
 import com.silence.music.bean.TestBean;
 import com.silence.music.contract.TestContract;
 import com.silence.music.presenter.TestPresenter;
+import com.silence.music.utils.Utils;
 
 /**
  * @author Administrator
@@ -48,7 +50,7 @@ public class MainActivity extends BaseActivity<TestPresenter,TestBean> implement
     @Override
     public void onBackPressed() {
         if ((System.currentTimeMillis() - exitTime) > 2000) {
-            Toast.makeText(this, "双击关闭应用", Toast.LENGTH_SHORT).show();
+            Utils.showTastyToast("再按一次退出程序", TastyToast.DEFAULT);
             exitTime = System.currentTimeMillis();
         } else {
             MainActivity.this.finish();
