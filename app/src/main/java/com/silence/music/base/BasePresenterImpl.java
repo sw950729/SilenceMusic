@@ -1,7 +1,5 @@
 package com.silence.music.base;
 
-import android.content.Context;
-
 import com.silence.music.base.ibase.IBasePresenter;
 import com.silence.music.base.ibase.IView;
 
@@ -13,13 +11,10 @@ import com.silence.music.base.ibase.IView;
 
 public class BasePresenterImpl<V extends IView> implements IBasePresenter {
 
-
     public V mView;
-    public Context context;
 
-    public void attachView(V view, Context context) {
+    public void attachView(V view) {
         this.mView = view;
-        this.context = context;
     }
 
 }

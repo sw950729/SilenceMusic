@@ -139,7 +139,7 @@ public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompa
      * @param datas
      */
     @Override
-    public void showDataSuccess(V datas) {
+    public void showDataSuccess(V data) {
         hiding();
     }
 

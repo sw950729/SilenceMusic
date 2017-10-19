@@ -7,4 +7,6 @@ package com.silence.music.base.ibase;
  */
 public interface IBasePresenter {
 
+
+
 }

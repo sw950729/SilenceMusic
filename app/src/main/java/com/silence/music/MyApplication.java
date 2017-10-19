@@ -10,13 +10,11 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.angel.music.BuildConfig;
 import com.silence.music.bean.BugEnvirInfoBean;
-import com.silence.music.crash.CrashHandler;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 /**
  * @author tinlone
  * @date 2017/10/17 0017.
@@ -30,7 +28,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
-        Thread.setDefaultUncaughtExceptionHandler(new CrashHandler());
         initBugly();
     }
     /**

@@ -6,14 +6,14 @@ import android.widget.Toast;
 
 import com.angel.music.R;
 import com.silence.music.base.BaseActivity;
-import com.silence.music.base.ibase.IView;
 import com.silence.music.bean.TestBean;
+import com.silence.music.contract.TestContract;
 import com.silence.music.presenter.TestPresenter;
 
 /**
  * @author Administrator
  */
-public class MainActivity extends BaseActivity<TestPresenter,TestBean> implements IView<TestBean> {
+public class MainActivity extends BaseActivity<TestPresenter,TestBean> implements TestContract.ITestView {
 
     private TextView tvLog;
     private long exitTime = 0;
@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity<TestPresenter,TestBean> implement
     @Override
     protected void initData(Bundle savedInstanceState) {
         initView();
+        mPresenter.attachView(this);
         mPresenter.getTestData(402308L);
     }
 
@@ -31,12 +32,12 @@ public class MainActivity extends BaseActivity<TestPresenter,TestBean> implement
 
     @Override
     protected TestPresenter enrollPresenter() {
-        return new TestPresenter(this);
+        return new TestPresenter();
     }
 
     @Override
-    public void showDataSuccess(TestBean datas) {
-        tvLog.setText(datas.toString());
+    public void showDataSuccess(TestBean data) {
+        tvLog.setText(data.toString());
 
     }
 

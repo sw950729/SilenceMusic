@@ -13,6 +13,7 @@
 /.idea/encodings.xml
 /.idea/modules.xml
 /.idea/vcs.xml
+/.idea/*
 
 # Files for the Dalvik VM
 *.dex
