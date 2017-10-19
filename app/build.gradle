@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.angel.music"
+        applicationId "com.silence.music"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -47,6 +47,11 @@ dependencies {
     compile 'com.tencent.bugly:crashreport:latest.release'
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //吐司
+    compile 'com.sdsmdg.tastytoast:tastytoast:latest.release'
+    //刷新
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     //fastjson
     compile 'com.alibaba:fastjson:1.1.64.android'
 }

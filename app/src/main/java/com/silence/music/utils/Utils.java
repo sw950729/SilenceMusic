@@ -1,9 +1,11 @@
 package com.silence.music.utils;
 
 import android.support.annotation.NonNull;
+import com.sdsmdg.tastytoast.TastyToast;
+import com.silence.music.MyApplication;
 
 /**
- * Created by Angel on 2017/4/24.
+ * Created by Silence on 2017/4/24.
  */
 public class Utils {
 
@@ -54,5 +56,10 @@ public class Utils {
             clickTagCunt++;
         }
         return false;
+    }
+
+    public static void showTastyToast(String msg,int type){
+        TastyToast.makeText(MyApplication.getInstance(), msg, TastyToast.LENGTH_SHORT,type);
+
     }
 }
