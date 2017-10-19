@@ -10,6 +10,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a",  "x86"
+        }
     }
     buildTypes {
         release {
@@ -22,11 +26,20 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.3.1'
+    //圆角图片
     compile 'com.angel:SWImageView:1.0.0'
+    //图片加载
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    //rxjava2+retrofit
     compile 'io.reactivex.rxjava2:rxjava:latest.release'
     compile 'io.reactivex.rxjava2:rxandroid:latest.release'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //fastjson
+    compile 'com.alibaba:fastjson:1.1.64.android'
 }
