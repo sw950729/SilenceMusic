@@ -33,15 +33,20 @@ public class TestPresenter extends BasePresenterImpl<TestContract.ITestView> imp
         params.put("method", "baidu.ting.song.lry");
         params.put("songid", id);
 
-        model.getTestData(params,new AsyncCallBack<TestBean>() {
+        model.getTestData(params, new AsyncCallBack<TestBean>() {
             @Override
             public void onSuccess(TestBean result) {
-                mView.showDataSuccess(result);
+                if (mView != null) {
+                    mView.showDataSuccess(result);
+                }
             }
 
             @Override
-            public void onFailed(String msg, int error_code) {
-                mView.showDataError(msg, error_code);
+            public void onFailed(String msg, int errorCode) {
+                // 此处校验mView，防止界面生命周期结束后，mView被回收（手动在onDestroy()中释放了Presenter的mView）
+                if (mView != null) {
+                    mView.showDataError(msg, errorCode);
+                }
             }
         });
     }

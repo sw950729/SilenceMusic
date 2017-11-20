@@ -2,6 +2,7 @@ package com.silence.music.base;
 
 import com.silence.music.base.ibase.IBasePresenter;
 import com.silence.music.base.ibase.IView;
+import com.silence.music.utils.L;
 
 
 /**
@@ -15,6 +16,13 @@ public class BasePresenterImpl<V extends IView> implements IBasePresenter {
 
     public void attachView(V view) {
         this.mView = view;
+        L.i("绑定mView");
+    }
+
+    @Override
+    public void detachView() {
+        mView = null;
+        L.i("解绑mView");
     }
 
 }

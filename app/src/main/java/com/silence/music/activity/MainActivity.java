@@ -2,7 +2,6 @@ package com.silence.music.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.angel.music.R;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -15,7 +14,7 @@ import com.silence.music.utils.Utils;
 /**
  * @author Administrator
  */
-public class MainActivity extends BaseActivity<TestPresenter,TestBean> implements TestContract.ITestView {
+public class MainActivity extends BaseActivity<TestPresenter, TestBean> implements TestContract.ITestView {
 
     private TextView tvLog;
     private long exitTime = 0;
@@ -28,12 +27,12 @@ public class MainActivity extends BaseActivity<TestPresenter,TestBean> implement
     }
 
     @Override
-    protected int enrollLayoutId() {
+    protected int bindLayoutId() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected TestPresenter enrollPresenter() {
+    protected TestPresenter bindPresenter() {
         return new TestPresenter();
     }
 
@@ -54,7 +53,8 @@ public class MainActivity extends BaseActivity<TestPresenter,TestBean> implement
             exitTime = System.currentTimeMillis();
         } else {
             MainActivity.this.finish();
-            System.exit(0);
+            //System.exit(0) 貌似Activity的生命周期未走完，所以我注释掉了
+            //System.exit(0);
         }
     }
 }

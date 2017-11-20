@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.silence.music.base.ibase.IBasePresenter;
 import com.silence.music.base.ibase.IView;
 import com.silence.music.utils.ActivityStack;
+import com.silence.music.utils.L;
 import com.silence.music.utils.statusbar.StatusBarUtil;
 
 /**
@@ -25,10 +26,10 @@ public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompa
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(enrollLayoutId());
+        setContentView(bindLayoutId());
         StatusBarUtil.setStatusWhite(this);
-        if (null != enrollPresenter()) {
-            mPresenter = enrollPresenter();
+        if (null != bindPresenter()) {
+            mPresenter = bindPresenter();
         }
         initData(savedInstanceState);
         ActivityStack.getInstace().addActivity(this);
@@ -38,23 +39,27 @@ public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompa
 
     /**
      * 供子类初始化数据，相当于在onCreate()中的初始化代码
+     *
+     * @param savedInstanceState 0.0
      */
     protected abstract void initData(Bundle savedInstanceState);
 
     /**
      * 绑定layoutID
+     * @return layoutID
      */
-    protected abstract int enrollLayoutId();
+    protected abstract int bindLayoutId();
 
     /**
      * 绑定Presenter
      */
-    protected T enrollPresenter() {
+    protected T bindPresenter() {
         return null;
     }
 
     /**
      * 界面跳转
+     *
      * @param clazz
      */
     protected void startActivity(Class clazz) {
@@ -81,16 +86,19 @@ public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompa
      *
      * @return
      */
-    protected View enrollLoadingView() {
+    protected View bindLoadingView() {
         return null;
     }
 
-
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         closeInputMethod();
         ActivityStack.getInstace().removeActivity(this);
+        if (mPresenter != null) {
+            L.i("onDestroy");
+            mPresenter.detachView();
+        }
+        super.onDestroy();
     }
 
 
@@ -136,7 +144,7 @@ public abstract class BaseActivity<T extends IBasePresenter, V> extends AppCompa
     /**
      * 加载数据成功
      *
-     * @param datas
+     * @param data
      */
     @Override
     public void showDataSuccess(V data) {

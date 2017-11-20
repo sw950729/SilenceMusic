@@ -14,7 +14,7 @@ public class TestContract {
 
     }
 
-    public interface ITestPresenter{
+    public interface ITestPresenter {
         /**
          * 获取测试数据
          * @param id
