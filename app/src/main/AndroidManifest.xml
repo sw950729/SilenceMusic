@@ -18,8 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name="com.silence.music.activity.MainActivity"/>
+        <activity android:name="com.silence.music.login.LoginActivity"/>
     </application>
 
 </manifest>

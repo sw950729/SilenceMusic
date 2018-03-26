@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -15,10 +15,11 @@ import rx.schedulers.Schedulers;
 
 /**
  * @author Silence
- * @date 2018/3/20.
+ * @date 2018/3/26.
  */
 
-public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatActivity implements IView {
+public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFragmentActivity  implements IView {
+
 
     public P presenter;
     public ProgressDialog progressDialog;
@@ -28,7 +29,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         super.onCreate(savedInstanceState);
         injectView();
         setContentView(getLayoutId());
-        if (presenter == null) {
+        if (presenter != null) {
             presenter = bindPresenter();
             presenter.attchView(this);
         }
@@ -114,6 +115,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     @Override
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showDataError() {
+
     }
 
     public <T> Observable.Transformer<T, T> bindLife() {

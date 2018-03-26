@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.angel.music.R;
-import com.silence.music.utils.statusbar.StatusBarUtil;
+import com.silence.music.login.LoginActivity;
 
 /**
  *
- * @author Angel
+ * @author Silence
  * @date 2017/10/15
  */
 public class Splash extends AppCompatActivity {
@@ -18,11 +18,10 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_splash);
-        StatusBarUtil.setTranslucent(this,30);
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Splash.this, MainActivity.class));
+                startActivity(new Intent(Splash.this, LoginActivity.class));
                 finish();
             }
         }, 3000);
