@@ -1,6 +1,13 @@
 package com.silence.music.base;
 
+
+import com.trello.rxlifecycle.LifecycleProvider;
+
 import java.lang.ref.WeakReference;
+
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Silence on 2018/3/19.
@@ -9,10 +16,12 @@ import java.lang.ref.WeakReference;
 public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     private WeakReference<V> view;
+    private LifecycleProvider<V> provider;
 
     @Override
-    public void attchView(V view) {
+    public void attchView(V view, LifecycleProvider<V> provider) {
         this.view = new WeakReference<>(view);
+        this.provider = provider;
     }
 
     protected V getView() {
@@ -29,5 +38,11 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
             view.clear();
             view = null;
         }
+    }
+
+    public <T> Observable.Transformer<T, T> bindLife() {
+        return observable -> observable.compose(provider.bindToLifecycle())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

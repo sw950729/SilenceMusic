@@ -23,8 +23,7 @@ public class LoginPresenter extends BasePresenter<ILoginContract.ILoginView> imp
     @Override
     public void login() {
         RxNetWork.getObserveHttp().getApi()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(bindLife())
                 .subscribe(loginBean -> {
                     if (!isViewAttached()) {
                         return;

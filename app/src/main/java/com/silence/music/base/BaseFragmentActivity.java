@@ -31,7 +31,7 @@ public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFr
         setContentView(getLayoutId());
         if (presenter != null) {
             presenter = bindPresenter();
-            presenter.attchView(this);
+            presenter.attchView(this,this);
         }
         initView();
         httpData();
@@ -120,11 +120,5 @@ public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFr
     @Override
     public void showDataError() {
 
-    }
-
-    public <T> Observable.Transformer<T, T> bindLife() {
-        return observable -> observable.compose(bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
     }
 }

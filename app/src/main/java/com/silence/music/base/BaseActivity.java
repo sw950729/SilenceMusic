@@ -9,9 +9,6 @@ import android.widget.Toast;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * @author Silence
@@ -30,7 +27,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         setContentView(getLayoutId());
         if (presenter == null) {
             presenter = bindPresenter();
-            presenter.attchView(this);
+            presenter.attchView(this,this);
         }
         initView();
         httpData();
@@ -116,9 +113,4 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    public <T> Observable.Transformer<T, T> bindLife() {
-        return observable -> observable.compose(bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
 }
