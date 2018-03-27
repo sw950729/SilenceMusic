@@ -62,7 +62,7 @@ public class RxNetWork {
         if (mOkHttpClient == null) {
             synchronized (RxNetWork.class) {
                 if (mOkHttpClient == null) {
-                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    mOkHttpClient = new OkHttpClient.Builder()
                             .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                             .retryOnConnectionFailure(true)
                             .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)

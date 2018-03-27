@@ -1,7 +1,12 @@
 package com.silence.music.login;
 
 
+
 import com.silence.music.base.BasePresenter;
+import com.silence.music.network.RxNetWork;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Silence on 2018/3/19.
@@ -16,17 +21,20 @@ public class LoginPresenter extends BasePresenter<ILoginContract.ILoginView> imp
     }
 
     @Override
-    public void login(String userName, String password) {
-        if (userName.equals("angel") && password.equals("123")) {
-            if (!isViewAttached()) {
-                return;
-            }
-            getView().showDataSuccess();
-        } else {
-            if (!isViewAttached()) {
-                return;
-            }
-            getView().showDataError();
-        }
+    public void login() {
+        RxNetWork.getObserveHttp().getApi()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(loginBean -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    getView().showDataSuccess(loginBean);
+                },throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    getView().showDataError();
+                });
     }
 }
