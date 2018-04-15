@@ -3,29 +3,69 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.angel.music"
+        applicationId "com.silence.music"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a",  "x86"
+        }
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
+            buildConfigField "String", "BASE_NUMBER", '"2"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug{
+            minifyEnabled false
+            buildConfigField "String", "BASE_NUMBER", '"1"'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.3.1'
+    //圆角图片
     compile 'com.angel:SWImageView:1.0.0'
+    //图片加载
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'io.reactivex.rxjava2:rxjava:latest.release'
-    compile 'io.reactivex.rxjava2:rxandroid:latest.release'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //rxjava2+retrofit
+    compile 'io.reactivex.rxjava2:rxjava:2.+'
+    compile 'io.reactivex.rxjava2:rxandroid:2.+'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.trello:rxlifecycle:1.0'
+    compile 'com.trello:rxlifecycle-components:1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    //权限申请,待支持。
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //吐司
+    compile 'com.sdsmdg.tastytoast:tastytoast:latest.release'
+
+    //刷新
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    //fastjson
+    compile 'com.alibaba:fastjson:1.1.64.android'
 }
