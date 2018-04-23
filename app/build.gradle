@@ -39,7 +39,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.4.0'
     //圆角图片
     compile 'com.angel:SWImageView:1.0.0'
     //图片加载

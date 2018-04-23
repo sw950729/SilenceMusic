@@ -1,11 +1,8 @@
 package com.silence.music.utils;
 
 import android.support.annotation.NonNull;
-<<<<<<< HEAD:app/src/main/java/com/silence/music/utils/Utils.java
-=======
 import com.sdsmdg.tastytoast.TastyToast;
 import com.silence.music.MyApplication;
->>>>>>> e4d458df25e24a2328e20da8de18ac46cba198bb:app/src/main/java/com/silence/music/utils/Utils.java
 
 /**
  * Created by Silence on 2017/4/24.
