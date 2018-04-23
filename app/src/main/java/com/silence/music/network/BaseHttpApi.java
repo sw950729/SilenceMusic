@@ -1,7 +1,5 @@
 package com.silence.music.network;
 
-import com.silence.music.bean.LoginBean;
-
 
 import retrofit2.http.GET;
 import rx.Observable;
@@ -12,7 +10,4 @@ import rx.Observable;
  */
 
 public interface BaseHttpApi {
-
-    @GET("login.json")
-    Observable<LoginBean> getApi();
 }

@@ -21,6 +21,15 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/fl_theme_singer"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:text="听歌识曲" />
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/fl_about_us"
             style="@style/home.fragment">
 
