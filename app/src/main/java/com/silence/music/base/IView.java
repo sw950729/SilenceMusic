@@ -20,12 +20,18 @@ public interface IView {
     /**
      * 显示空布局
      */
-    int showEmptyView();
+    void showEmptyView();
 
     /**
      * 显示网络出错的布局
      */
-    int showNetErrorView();
+    void showNetErrorView();
+
+
+    /**
+     * 获取数据成功
+     */
+    void showDataSuccess();
 
     /**
      * 显示吐司

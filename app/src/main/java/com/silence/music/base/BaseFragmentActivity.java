@@ -1,28 +1,29 @@
 package com.silence.music.base;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.angel.music.R;
+import com.silence.music.view.loading.LoadingViewHelper;
 import com.trello.rxlifecycle.components.support.RxFragmentActivity;
-
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * @author Silence
  * @date 2018/3/26.
  */
 
-public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFragmentActivity  implements IView {
+public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFragmentActivity implements IView {
 
 
     public P presenter;
     public ProgressDialog progressDialog;
+    public LoadingViewHelper mLoadingViewHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFr
         setContentView(getLayoutId());
         if (presenter != null) {
             presenter = bindPresenter();
-            presenter.attchView(this,this);
+            presenter.attchView(this, this);
         }
         initView();
         httpData();
@@ -103,13 +104,42 @@ public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFr
     }
 
     @Override
-    public int showEmptyView() {
-        return 0;
+    public void showEmptyView() {
     }
 
     @Override
-    public int showNetErrorView() {
-        return 0;
+    public void showNetErrorView() {
+    }
+
+    @SuppressLint("InflateParams")
+    public void initLoadingLayout(Context mContext, int layoutId) {
+        if (mContext == null || findViewById(layoutId) == null) {
+            return;
+        }
+        mLoadingViewHelper = new LoadingViewHelper.Builder()
+                .setDataView(findViewById(layoutId))
+                .setLoadingView(getLayoutInflater().inflate(R.layout.layout_loading, null))
+                .setErrorView(getLayoutInflater().inflate(R.layout.layout_error, null))
+                .setEmptyView(getLayoutInflater().inflate(R.layout.layout_empty, null))
+                .setRefreshListener(v -> loadingClick())
+                .build();
+        mLoadingViewHelper.showLoadingView();
+    }
+
+    public void initLoadingLayout(int layoutId) {
+        this.initLoadingLayout(this, layoutId);
+    }
+
+    public void loadingClick() {
+        mLoadingViewHelper.showLoadingView();
+        bindPresenter();
+    }
+
+    @Override
+    public void showDataSuccess() {
+        if (null != mLoadingViewHelper) {
+            mLoadingViewHelper.showDataView();
+        }
     }
 
     @Override
@@ -119,6 +149,5 @@ public abstract class BaseFragmentActivity<P extends BasePresenter> extends RxFr
 
     @Override
     public void showDataError() {
-
     }
 }
