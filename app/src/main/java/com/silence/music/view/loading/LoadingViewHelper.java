@@ -56,8 +56,10 @@ public class LoadingViewHelper {
         mLoadingView = view;
         mLoadingView.setClickable(true);
         img_progress = (ImageView) view.findViewById(R.id.img_progress);
+        img_progress.setBackgroundResource(R.drawable.home_loading_animation);
         mAnimationDrawable = (AnimationDrawable) img_progress.getDrawable();
         // 默认进入页面就开启动画
+
         startProgress();
     }
 
@@ -68,7 +70,7 @@ public class LoadingViewHelper {
 
     public void showLoadingView() {
         mViewHelper.showCaseLayout(mLoadingView);
-        stopProgress();
+//        stopProgress();
     }
 
     public void showDataView() {
