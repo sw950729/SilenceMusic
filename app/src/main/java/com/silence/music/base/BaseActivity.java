@@ -32,7 +32,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         setContentView(getLayoutId());
         if (presenter == null) {
             presenter = bindPresenter();
-            presenter.attchView(this, this);
+            if(presenter!=null) {
+                presenter.attchView(this, this);
+            }
         }
         initView();
         httpData();

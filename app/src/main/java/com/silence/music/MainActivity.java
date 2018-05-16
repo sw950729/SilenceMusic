@@ -1,6 +1,7 @@
 package com.silence.music;
 
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,12 @@ import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.angel.music.R;
+import com.silence.music.adapter.HomeFragmentPageAdapter;
+import com.silence.music.base.BaseFragment;
+import com.silence.music.main.LocalFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -21,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout fl_title_menu;
     private RadioGroup rg_home_viewpager_contorl;
     private DrawerLayout dl_layout;
+    private ViewPager vp_content;
+    private List<BaseFragment> fragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +41,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initial() {
         fl_title_menu = (FrameLayout) findViewById(R.id.fl_title_menu);
         rg_home_viewpager_contorl = (RadioGroup) findViewById(R.id.rg_home_viewpager_contorl);
-        dl_layout= (DrawerLayout) findViewById(R.id.dl_layout);
+        dl_layout = (DrawerLayout) findViewById(R.id.dl_layout);
+        vp_content = (ViewPager) findViewById(R.id.vp_content);
         fl_title_menu.setOnClickListener(this);
+        fragmentList.add(new LocalFragment());
+        fragmentList.add(new LocalFragment());
+        fragmentList.add(new LocalFragment());
+        vp_content.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), fragmentList));
+        vp_content.setCurrentItem(1);
+        vp_content.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        rg_home_viewpager_contorl.check(R.id.rb_home_pager);
+                        break;
+                    case 1:
+                        rg_home_viewpager_contorl.check(R.id.rb_music_pager);
+                        break;
+                    case 2:
+                        rg_home_viewpager_contorl.check(R.id.rb_friend_pager);
+                        break;
+                    default:
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
