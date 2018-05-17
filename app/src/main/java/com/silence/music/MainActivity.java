@@ -14,6 +14,7 @@ import com.angel.music.R;
 import com.silence.music.adapter.HomeFragmentPageAdapter;
 import com.silence.music.base.BaseFragment;
 import com.silence.music.main.LocalFragment;
+import com.silence.music.main.RecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vp_content = (ViewPager) findViewById(R.id.vp_content);
         fl_title_menu.setOnClickListener(this);
         fragmentList.add(new LocalFragment());
-        fragmentList.add(new LocalFragment());
+        fragmentList.add(new RecommendFragment());
         fragmentList.add(new LocalFragment());
         vp_content.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), fragmentList));
         vp_content.setCurrentItem(1);
