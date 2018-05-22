@@ -69,4 +69,5 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'
     //fastjson
     compile 'com.alibaba:fastjson:1.1.64.android'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
 }
