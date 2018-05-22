@@ -77,6 +77,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        rg_home_viewpager_contorl.setOnCheckedChangeListener(((radioGroup, checkedId) -> {
+            switch (radioGroup.getCheckedRadioButtonId()) {
+                case R.id.rb_home_pager:
+                    rg_home_viewpager_contorl.check(R.id.rb_home_pager);
+                    vp_content.setCurrentItem(0);
+                    break;
+                case R.id.rb_music_pager:
+                    rg_home_viewpager_contorl.check(R.id.rb_music_pager);
+                    vp_content.setCurrentItem(1);
+                    break;
+                case R.id.rb_friend_pager:
+                    rg_home_viewpager_contorl.check(R.id.rb_friend_pager);
+                    vp_content.setCurrentItem(2);
+                    break;
+                default:
+            }
+        }));
     }
 
     @Override
@@ -101,10 +118,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 按返回键不退出应用。
-     *
-     * @param keyCode
-     * @param event
-     * @return
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

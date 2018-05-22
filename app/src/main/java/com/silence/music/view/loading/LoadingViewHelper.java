@@ -56,7 +56,6 @@ public class LoadingViewHelper {
         mLoadingView = view;
         mLoadingView.setClickable(true);
         img_progress = (ImageView) view.findViewById(R.id.img_progress);
-        img_progress.setBackgroundResource(R.drawable.yun_anim);
         mAnimationDrawable = (AnimationDrawable) img_progress.getDrawable();
         // 默认进入页面就开启动画
         startProgress();

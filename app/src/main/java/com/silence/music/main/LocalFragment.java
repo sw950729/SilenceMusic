@@ -12,7 +12,7 @@ public class LocalFragment extends BaseFragment {
 
     @Override
     public void initView() {
-        initLoadingLayout(R.id.text);
+        initLoadingLayout(R.id.framelayout);
     }
 
     @Override
