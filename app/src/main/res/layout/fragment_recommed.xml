@@ -14,8 +14,10 @@
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            app:delay_time="2000"
+            app:delay_time="4000"
             app:image_scale_type="fit_xy"
+            app:indicator_width="8dp"
+            app:indicator_height="8dp"
             app:indicator_drawable_selected="@mipmap/pager_view_dot_yes"
             app:indicator_drawable_unselected="@mipmap/pager_view_dot_nor" />
 

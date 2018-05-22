@@ -25,7 +25,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
 
     public P presenter;
     public ProgressDialog progressDialog;
-    private View mView;
+    public View mView;
     public LoadingViewHelper mLoadingViewHelper;
 
     @Nullable
