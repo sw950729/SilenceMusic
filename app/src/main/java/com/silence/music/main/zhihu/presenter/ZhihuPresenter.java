@@ -1,8 +1,8 @@
-package com.silence.music.main.zhihu;
+package com.silence.music.main.zhihu.presenter;
 
 import com.silence.music.base.BasePresenter;
+import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.network.RxNetWork;
-import com.silence.music.utils.Utils;
 
 /**
  * @autor :Silence
@@ -18,8 +18,8 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
 
     @Override
     public void getNewsData() {
-        RxNetWork.getObserveHttp().getNews()
+        RxNetWork.getZhihuHttp().getNews()
                 .compose(bindLife())
-                .subscribe(bean -> view.showNews(bean), throwable -> Utils.showToast("服务器连接异常！"));
+                .subscribe(bean -> view.showNews(bean), throwable -> view.showToast("服务器连接异常！"));
     }
 }

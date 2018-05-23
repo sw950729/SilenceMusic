@@ -37,7 +37,7 @@ public class RxNetWork {
         getOkHttpClient();
     }
 
-    public static BaseHttpApi getObserveHttp() {
+    public static BaseHttpApi getObserverHttp() {
 
         if (baseHttpApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
@@ -51,13 +51,27 @@ public class RxNetWork {
         return baseHttpApi;
     }
 
-    public static BaseHttpApi getObserveHttps() {
+    public static BaseHttpApi getObserverHttps() {
         if (baseHttpApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .client(mOkHttpClient)
                     .baseUrl(BaseUrl.BASE_HTTPS)
+                    .build();
+            baseHttpApi = retrofit.create(BaseHttpApi.class);
+        }
+        return baseHttpApi;
+    }
+
+    public static BaseHttpApi getZhihuHttp() {
+
+        if (baseHttpApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .client(mOkHttpClient)
+                    .baseUrl(BaseUrl.ZHIHU_HTTP)
                     .build();
             baseHttpApi = retrofit.create(BaseHttpApi.class);
         }

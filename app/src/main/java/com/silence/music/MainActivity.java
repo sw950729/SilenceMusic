@@ -15,7 +15,7 @@ import com.silence.music.adapter.HomeFragmentPageAdapter;
 import com.silence.music.base.BaseFragment;
 import com.silence.music.main.LocalFragment;
 import com.silence.music.main.RecommendFragment;
-import com.silence.music.main.ZhiHuFragment;
+import com.silence.music.main.zhihu.ZhiHuFragment;
 
 import java.util.ArrayList;
 import java.util.List;

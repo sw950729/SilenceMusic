@@ -1,4 +1,4 @@
-package com.silence.music.main;
+package com.silence.music.main.zhihu;
 
 import com.angel.music.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -6,8 +6,8 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.silence.music.base.BaseFragment;
 import com.silence.music.bean.NewsBean;
-import com.silence.music.main.zhihu.IZhihuContract;
-import com.silence.music.main.zhihu.ZhihuPresenter;
+import com.silence.music.main.zhihu.contract.IZhihuContract;
+import com.silence.music.main.zhihu.presenter.ZhihuPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
