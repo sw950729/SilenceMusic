@@ -15,6 +15,7 @@ import com.silence.music.adapter.HomeFragmentPageAdapter;
 import com.silence.music.base.BaseFragment;
 import com.silence.music.main.LocalFragment;
 import com.silence.music.main.RecommendFragment;
+import com.silence.music.main.ZhiHuFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fl_title_menu.setOnClickListener(this);
         fragmentList.add(new LocalFragment());
         fragmentList.add(new RecommendFragment());
-        fragmentList.add(new LocalFragment());
+        fragmentList.add(new ZhiHuFragment());
         vp_content.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), fragmentList));
         vp_content.setCurrentItem(1);
         vp_content.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

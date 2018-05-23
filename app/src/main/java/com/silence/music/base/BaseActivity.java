@@ -130,26 +130,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     }
 
     @Override
-    public void showEmptyView() {
-    }
-
-    @Override
-    public void showNetErrorView() {
-    }
-
-    @Override
-    public void showDataError() {
-
-    }
-
-    @Override
-    public void showDataSuccess() {
-        if (null != mLoadingViewHelper) {
-            mLoadingViewHelper.showDataView();
-        }
-    }
-
-    @Override
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }

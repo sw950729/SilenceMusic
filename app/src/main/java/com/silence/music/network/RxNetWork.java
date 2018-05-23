@@ -1,5 +1,11 @@
 package com.silence.music.network;
 
+import android.text.TextUtils;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -63,6 +69,7 @@ public class RxNetWork {
             synchronized (RxNetWork.class) {
                 if (mOkHttpClient == null) {
                     mOkHttpClient = new OkHttpClient.Builder()
+                            .addInterceptor(getHttpLoggingInterceptor())
                             .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                             .retryOnConnectionFailure(true)
                             .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -72,5 +79,35 @@ public class RxNetWork {
                 }
             }
         }
+    }
+
+    private static HttpLoggingInterceptor getHttpLoggingInterceptor() {
+        //日志显示级别
+        HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
+        //新建log拦截器
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> {
+            if (TextUtils.isEmpty(message)) {
+                return;
+            }
+            String s = message.substring(0, 1);
+            if ("{".equals(s) || "[".equals(s)) {
+                Log.i("RxNetWork", "Retrofit====Message:" + message);
+            }
+
+            try {
+                JSONObject jsonObject = new JSONObject(message);
+                if (jsonObject.has("resCode")) {
+                    String resCode = jsonObject.optString("resCode");
+                    if (resCode.equals("-1")) {
+                        System.exit(0);
+                        Log.i("RxNetWork", "manager-->>" + resCode);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        loggingInterceptor.setLevel(level);
+        return loggingInterceptor;
     }
 }

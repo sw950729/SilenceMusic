@@ -98,13 +98,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
     }
 
     @Override
-    public void showDataSuccess() {
-        if (null != mLoadingViewHelper) {
-            mLoadingViewHelper.showDataView();
-        }
-    }
-
-    @Override
     public void showToast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
     }
@@ -126,18 +119,5 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
             intent.putExtras(bundle);
         }
         startActivity(intent);
-    }
-
-    @Override
-    public void showEmptyView() {
-    }
-
-    @Override
-    public void showNetErrorView() {
-    }
-
-    @Override
-    public void showDataError() {
-
     }
 }

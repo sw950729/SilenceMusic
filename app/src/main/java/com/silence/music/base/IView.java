@@ -16,30 +16,8 @@ public interface IView {
      * 影藏加载框
      */
     void hideProgressDialog();
-
-    /**
-     * 显示空布局
-     */
-    void showEmptyView();
-
-    /**
-     * 显示网络出错的布局
-     */
-    void showNetErrorView();
-
-
-    /**
-     * 获取数据成功
-     */
-    void showDataSuccess();
-
     /**
      * 显示吐司
      */
     void showToast(String msg);
-
-    /**
-     * 数据加载失败
-     */
-    void showDataError();
 }
