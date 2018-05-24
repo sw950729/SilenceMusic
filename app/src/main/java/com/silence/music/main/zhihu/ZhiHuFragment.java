@@ -2,8 +2,6 @@ package com.silence.music.main.zhihu;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.angel.music.R;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -38,13 +36,11 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     @Override
     public void initView() {
         initLoadingLayout(R.id.refreshLayout);
+        banner = (Banner) mView.findViewById(R.id.banner);
         refreshLayout = (SmartRefreshLayout) mView.findViewById(R.id.refreshLayout);
         recycler = (RecyclerView) mView.findViewById(R.id.recycler);
-        View headerView = getActivity().getLayoutInflater().inflate(R.layout.banner, (ViewGroup) refreshLayout.getParent(),false);
-        banner = (Banner) headerView.findViewById(R.id.banner);
         adapter = new ZhiHuAdapter(mContext);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.setHeaderView(headerView);
         recycler.setAdapter(adapter);
         banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
