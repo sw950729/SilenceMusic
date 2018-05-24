@@ -9,10 +9,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters "armeabi", "armeabi-v7a",  "x86"
-        }
         jackOptions {
             enabled true
         }
@@ -24,7 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug{
+        debug {
             minifyEnabled false
             buildConfigField "String", "BASE_NUMBER", '"1"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -70,4 +66,6 @@ dependencies {
     //fastjson
     compile 'com.alibaba:fastjson:1.1.64.android'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
+    //RecyclerView adapter适配器
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 }

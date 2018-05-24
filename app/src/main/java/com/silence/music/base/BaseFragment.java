@@ -26,12 +26,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
     public P presenter;
     public ProgressDialog progressDialog;
     public View mView;
+    public Context mContext;
     public LoadingViewHelper mLoadingViewHelper;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(getLayoutId(), container, false);
+        mContext = getContext();
         if (presenter == null) {
             presenter = bindPresenter();
             if (presenter != null) {
@@ -123,7 +125,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(getUserVisibleHint()){
+        if (getUserVisibleHint()) {
             httpData();
         }
     }

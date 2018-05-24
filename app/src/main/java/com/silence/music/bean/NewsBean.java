@@ -1,5 +1,8 @@
 package com.silence.music.bean;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.silence.music.adapter.ZhiHuAdapter;
+
 import java.util.List;
 
 /**
@@ -47,7 +50,7 @@ public class NewsBean {
         this.top_stories = top_stories;
     }
 
-    public static class StoriesBean {
+    public static class StoriesBean implements MultiItemEntity {
 
         private String title;
         private String ga_prefix;
@@ -93,6 +96,11 @@ public class NewsBean {
 
         public void setImages(List<String> images) {
             this.images = images;
+        }
+
+        @Override
+        public int getItemType() {
+            return ZhiHuAdapter.DAILY;
         }
     }
 
