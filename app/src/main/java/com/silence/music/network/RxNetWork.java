@@ -3,6 +3,8 @@ package com.silence.music.network;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.angel.music.BuildConfig;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -103,22 +105,8 @@ public class RxNetWork {
             if (TextUtils.isEmpty(message)) {
                 return;
             }
-            String s = message.substring(0, 1);
-            if ("{".equals(s) || "[".equals(s)) {
+            if (BuildConfig.DEBUG) {
                 Log.i("RxNetWork", "Retrofit====Message:" + message);
-            }
-
-            try {
-                JSONObject jsonObject = new JSONObject(message);
-                if (jsonObject.has("resCode")) {
-                    String resCode = jsonObject.optString("resCode");
-                    if (resCode.equals("-1")) {
-                        System.exit(0);
-                        Log.i("RxNetWork", "manager-->>" + resCode);
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
         });
         loggingInterceptor.setLevel(level);

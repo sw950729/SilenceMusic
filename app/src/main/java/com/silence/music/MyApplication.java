@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.angel.music.BuildConfig;
 import com.angel.music.R;
+import com.scwang.smartrefresh.header.BezierCircleHeader;
+import com.scwang.smartrefresh.header.FlyRefreshHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;

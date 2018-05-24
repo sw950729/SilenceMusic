@@ -39,7 +39,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
             }
         }
         initView();
-        httpData();
         return mView;
     }
 
@@ -119,5 +118,13 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
             intent.putExtras(bundle);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(getUserVisibleHint()){
+            httpData();
+        }
     }
 }

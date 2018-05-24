@@ -44,10 +44,10 @@ public class Utils {
             if (tag.equals(clickTag[i])) {
                 if (time - clickTagTime[i] < millisSecond) {
                     clickTagTime[i] = time;
-                    return true;
+                    isSaved = true;
                 } else {
                     clickTagTime[i] = time;
-                    return false;
+                    isSaved = false;
                 }
             }
         }
@@ -56,10 +56,6 @@ public class Utils {
             clickTagTime[clickTagCunt] = time;
             clickTagCunt++;
         }
-        return false;
-    }
-
-    public static void showToast(String msg) {
-        Toast.makeText(MyApplication.getInstance(), msg, Toast.LENGTH_SHORT).show();
+        return isSaved;
     }
 }
