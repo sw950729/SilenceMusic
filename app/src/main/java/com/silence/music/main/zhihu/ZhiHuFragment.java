@@ -27,7 +27,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
 
     @Override
     public void initView() {
-        initLoadingLayout(R.id.ll_content);
+        initLoadingLayout(R.id.refreshLayout);
         banner = (Banner) mView.findViewById(R.id.banner);
         refreshLayout = (SmartRefreshLayout) mView.findViewById(R.id.refreshLayout);
         banner.setIndicatorGravity(BannerConfig.CENTER);
