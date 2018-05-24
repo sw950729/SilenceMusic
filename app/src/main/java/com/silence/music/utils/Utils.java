@@ -1,7 +1,8 @@
 package com.silence.music.utils;
 
 import android.support.annotation.NonNull;
-import com.sdsmdg.tastytoast.TastyToast;
+import android.widget.Toast;
+
 import com.silence.music.MyApplication;
 
 /**
@@ -58,8 +59,7 @@ public class Utils {
         return false;
     }
 
-    public static void showTastyToast(String msg,int type){
-        TastyToast.makeText(MyApplication.getInstance(), msg, TastyToast.LENGTH_SHORT,type);
-
+    public static void showToast(String msg) {
+        Toast.makeText(MyApplication.getInstance(), msg, Toast.LENGTH_SHORT).show();
     }
 }

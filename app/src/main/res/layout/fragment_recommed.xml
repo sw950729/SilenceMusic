@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp310"
+            app:delay_time="4000"
+            app:indicator_drawable_selected="@mipmap/pager_view_dot_yes"
+            app:indicator_drawable_unselected="@mipmap/pager_view_dot_nor"
+            app:indicator_height="@dimen/dp10"
+            app:indicator_width="@dimen/dp10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp30"
+            android:orientation="horizontal">
+
+            <com.silence.music.view.RecommendLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp150"
+                android:layout_weight="1"
+                app:src="@mipmap/self_fm"
+                app:text="私人FM" />
+
+            <com.silence.music.view.RecommendLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp150"
+                android:layout_weight="1"
+                app:src="@mipmap/recommendation"
+                app:text="每日推荐" />
+
+            <com.silence.music.view.RecommendLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp150"
+                android:layout_weight="1"
+                app:src="@mipmap/music_list"
+                app:text="歌单" />
+
+            <com.silence.music.view.RecommendLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp150"
+                android:layout_weight="1"
+                app:src="@mipmap/ranking_list"
+                app:text="排行榜" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

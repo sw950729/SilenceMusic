@@ -5,26 +5,30 @@
     </declare-styleable>
 
     <declare-styleable name="SWToggleButton">
-        <attr name="opencolor" format="color"/>
-        <attr name="closecolor" format="color"/>
-        <attr name="bordercolor" format="color"/>
+        <attr name="opencolor" format="color" />
+        <attr name="closecolor" format="color" />
+        <attr name="bordercolor" format="color" />
     </declare-styleable>
     <declare-styleable name="SWEditText">
-        <attr name="clear_pic" format="reference"/>
-        <attr name="width_clear" format="dimension"/>
-        <attr name="interval" format="dimension"/>
+        <attr name="clear_pic" format="reference" />
+        <attr name="width_clear" format="dimension" />
+        <attr name="interval" format="dimension" />
     </declare-styleable>
     <declare-styleable name="SWPasswordText">
-        <attr name="pic_open" format="reference"/>
-        <attr name="pic_close" format="reference"/>
+        <attr name="pic_open" format="reference" />
+        <attr name="pic_close" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="SWImageView">
-        <attr name="borderRadius" format="dimension"/>
+        <attr name="borderRadius" format="dimension" />
         <attr name="type">
-            <enum name="normal" value="-1"/>
-            <enum name="circle" value="0"/>
-            <enum name="round" value="1"/>
+            <enum name="normal" value="-1" />
+            <enum name="circle" value="0" />
+            <enum name="round" value="1" />
         </attr>
+    </declare-styleable>
+    <declare-styleable name="RecommendLayout">
+        <attr name="text" format="string" />
+        <attr name="src" format="reference" />
     </declare-styleable>
 </resources>

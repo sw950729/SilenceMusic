@@ -1,12 +1,16 @@
 package com.silence.music.base;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.angel.music.R;
+import com.silence.music.view.loading.LoadingViewHelper;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 
@@ -19,6 +23,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
 
     public P presenter;
     public ProgressDialog progressDialog;
+    public LoadingViewHelper mLoadingViewHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +32,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         setContentView(getLayoutId());
         if (presenter == null) {
             presenter = bindPresenter();
-            presenter.attchView(this,this);
+            if(presenter!=null) {
+                presenter.attchView(this, this);
+            }
         }
         initView();
         httpData();
@@ -91,21 +98,35 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         progressDialog.show();
     }
 
+    @SuppressLint("InflateParams")
+    public void initLoadingLayout(Context mContext, int layoutId) {
+        if (mContext == null || findViewById(layoutId) == null) {
+            return;
+        }
+        mLoadingViewHelper = new LoadingViewHelper.Builder()
+                .setDataView(findViewById(layoutId))
+                .setLoadingView(getLayoutInflater().inflate(R.layout.layout_loading, null))
+                .setErrorView(getLayoutInflater().inflate(R.layout.layout_error, null))
+                .setEmptyView(getLayoutInflater().inflate(R.layout.layout_empty, null))
+                .setRefreshListener(v -> loadingClick())
+                .build();
+        mLoadingViewHelper.showLoadingView();
+    }
+
+    public void initLoadingLayout(int layoutId) {
+        this.initLoadingLayout(this, layoutId);
+    }
+
+    public void loadingClick() {
+        mLoadingViewHelper.showLoadingView();
+        bindPresenter();
+    }
+
     @Override
     public void hideProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
-    }
-
-    @Override
-    public int showEmptyView() {
-        return 0;
-    }
-
-    @Override
-    public int showNetErrorView() {
-        return 0;
     }
 
     @Override
