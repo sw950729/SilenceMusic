@@ -55,7 +55,7 @@ public class LoadingViewHelper {
     public void setUpLoadingView(View view) {
         mLoadingView = view;
         mLoadingView.setClickable(true);
-        img_progress = (ImageView) view.findViewById(R.id.img_progress);
+        img_progress = view.findViewById(R.id.img_progress);
         mAnimationDrawable = (AnimationDrawable) img_progress.getDrawable();
         // 默认进入页面就开启动画
         startProgress();

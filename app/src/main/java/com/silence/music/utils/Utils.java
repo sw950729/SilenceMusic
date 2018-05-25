@@ -1,9 +1,6 @@
 package com.silence.music.utils;
 
 import android.support.annotation.NonNull;
-import android.widget.Toast;
-
-import com.silence.music.MyApplication;
 
 /**
  * Created by Silence on 2017/4/24.

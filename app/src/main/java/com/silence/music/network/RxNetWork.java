@@ -5,9 +5,6 @@ import android.util.Log;
 
 import com.angel.music.BuildConfig;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;

@@ -37,8 +37,8 @@ public class RecommendLayout extends FrameLayout {
     @SuppressLint("SetTextI18n")
     private void initial(Context context, AttributeSet attrs) {
         View view = LayoutInflater.from(context).inflate(R.layout.base_recommend, this);
-        tv_content = (TextView) view.findViewById(R.id.tv_content);
-        iv_content = (ImageView) view.findViewById(R.id.iv_content);
+        tv_content = view.findViewById(R.id.tv_content);
+        iv_content = view.findViewById(R.id.iv_content);
         @SuppressLint("Recycle") TypedArray array = context.obtainStyledAttributes(attrs,
                 R.styleable.RecommendLayout);
         custom_text = array.getString(R.styleable.RecommendLayout_text);

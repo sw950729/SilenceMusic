@@ -1,12 +1,12 @@
 package com.silence.music.main.zhihu;
 
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.angel.music.R;
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -19,6 +19,7 @@ import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.main.zhihu.presenter.ZhihuPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +40,26 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     @Override
     public void initView() {
         initLoadingLayout(R.id.refreshLayout);
-        refreshLayout = (SmartRefreshLayout) mView.findViewById(R.id.refreshLayout);
-        recycler = (RecyclerView) mView.findViewById(R.id.recycler);
-        View headerview = LayoutInflater.from(mContext).inflate(R.layout.banner, (ViewGroup) refreshLayout.getParent(), false);
-        banner = (Banner) headerview.findViewById(R.id.banner);
-        adapter = new ZhiHuAdapter(mContext);
+        refreshLayout = mView.findViewById(R.id.refreshLayout);
+        recycler = mView.findViewById(R.id.recycler);
+        banner = mView.findViewById(R.id.banner);
+        banner.setIndicatorGravity(BannerConfig.CENTER)
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+                .setImageLoader(new ImageLoader() {
+                    @Override
+                    public void displayImage(Context context, Object path, ImageView imageView) {
+                        Glide.with(context)
+                                .load(path)
+                                .placeholder(R.mipmap.magic_bg)
+                                .error(R.mipmap.magic_bg)
+                                .into(imageView);
+                    }
+                })
+                .isAutoPlay(true);
+
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.addHeaderView(headerview);
+        adapter = new ZhiHuAdapter(mContext);
         recycler.setAdapter(adapter);
-        banner.setIndicatorGravity(BannerConfig.CENTER);
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         refreshLayout.setOnRefreshListener(this);
     }
 
@@ -85,12 +96,27 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
         data.add(new ZhiHuDailyHeader(isShow));
         data.addAll(bean.getStories());
         adapter.setNewData(data);
-        banner.setImages(imagesUrl);
-        banner.setBannerTitleList(title);
+        banner.setImages(imagesUrl)
+                .setBannerTitles(title)
+                .start();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
         presenter.getNewsData();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (banner != null)
+            banner.startAutoPlay();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (banner != null)
+            banner.stopAutoPlay();
     }
 }

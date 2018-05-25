@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initial() {
-        fl_title_menu = (FrameLayout) findViewById(R.id.fl_title_menu);
-        rg_home_viewpager_contorl = (RadioGroup) findViewById(R.id.rg_home_viewpager_contorl);
-        dl_layout = (DrawerLayout) findViewById(R.id.dl_layout);
-        vp_content = (ViewPager) findViewById(R.id.vp_content);
+        fl_title_menu = findViewById(R.id.fl_title_menu);
+        rg_home_viewpager_contorl = findViewById(R.id.rg_home_viewpager_contorl);
+        dl_layout = findViewById(R.id.dl_layout);
+        vp_content = findViewById(R.id.vp_content);
         fl_title_menu.setOnClickListener(this);
         fragmentList.add(new LocalFragment());
         fragmentList.add(new RecommendFragment());

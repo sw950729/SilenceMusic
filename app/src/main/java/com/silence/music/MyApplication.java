@@ -1,17 +1,15 @@
 package com.silence.music;
 
 import android.app.Application;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.TextUtils;
+
 import com.alibaba.fastjson.JSON;
 import com.angel.music.BuildConfig;
 import com.angel.music.R;
-import com.scwang.smartrefresh.header.BezierCircleHeader;
-import com.scwang.smartrefresh.header.FlyRefreshHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -21,6 +19,7 @@ import com.tencent.bugly.crashreport.CrashReport;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 /**
  * @author tinlone
  * @date 2017/10/17 0017.
@@ -36,6 +35,7 @@ public class MyApplication extends Application {
         mApp = this;
         initBugly();
     }
+
     /**
      * bugly初始化设置
      */
@@ -106,20 +106,21 @@ public class MyApplication extends Application {
         }
         return null;
     }
-    public static MyApplication getInstance(){
+
+    public static MyApplication getInstance() {
         return mApp;
     }
 
     static {
         //设置全局的Header构建器
-        SmartRefreshLayout.setDefaultRefreshHeaderCreater((context, layout) -> {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
             layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
             return new ClassicsHeader(context);//指定为经典Header，默认是 贝塞尔雷达Header
         });
         //设置全局的Footer构建器
-        SmartRefreshLayout.setDefaultRefreshFooterCreater((context, layout) -> {
-            //指定为经典Footer，默认是 BallPulseFooter
-            return new ClassicsFooter(context).setDrawableSize(20);
-        });
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) ->
+                //指定为经典Footer，默认是 BallPulseFooter
+                new ClassicsFooter(context).setDrawableSize(20)
+        );
     }
 }

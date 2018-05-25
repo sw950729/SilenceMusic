@@ -2,7 +2,6 @@ package com.silence.music.main.zhihu.contract;
 
 import com.silence.music.base.IView;
 import com.silence.music.bean.NewsBean;
-import com.silence.music.bean.NewsListBean;
 
 /**
  * @autor :Silence

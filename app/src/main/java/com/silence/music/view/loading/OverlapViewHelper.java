@@ -17,20 +17,20 @@ public class OverlapViewHelper implements ICaseViewHelper {
         this.mDataView = view;
 
         /*找到父View*/
-        ViewGroup parent ;
-        if (view.getParent()!=null){
+        ViewGroup parent;
+        if (view.getParent() != null) {
             parent = (ViewGroup) view.getParent();
-        }else {
-            parent=(ViewGroup)view.getRootView().findViewById(android.R.id.content);
+        } else {
+            parent = view.getRootView().findViewById(android.R.id.content);
         }
 
 
         /*记录要显示的View在父View中的位置*/
-        int childIndex=0;
-        int childCount= parent.getChildCount();
-        for (int index=0;index<childCount;index++){
-            if (view== parent.getChildAt(index)){
-                childIndex =index;
+        int childIndex = 0;
+        int childCount = parent.getChildCount();
+        for (int index = 0; index < childCount; index++) {
+            if (view == parent.getChildAt(index)) {
+                childIndex = index;
                 break;
             }
         }
@@ -39,7 +39,7 @@ public class OverlapViewHelper implements ICaseViewHelper {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         FrameLayout frameLayout = new FrameLayout(view.getContext());
         parent.removeViewAt(childIndex);
-        parent.addView(frameLayout,childIndex, layoutParams);
+        parent.addView(frameLayout, childIndex, layoutParams);
 
         /*在这个frameLayout中实现将新的View覆盖在原来的view上*/
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

@@ -21,12 +21,12 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
         RxNetWork.getZhihuHttp().getNews()
                 .compose(bindLife())
                 .subscribe(bean -> {
-                    if (isViewAttached()) {
+                    if (!isViewAttached()) {
                         return;
                     }
                     view.showNews(bean);
                 }, throwable -> {
-                    if (isViewAttached()) {
+                    if (!isViewAttached()) {
                         return;
                     }
                     view.showToast("服务器连接异常！");

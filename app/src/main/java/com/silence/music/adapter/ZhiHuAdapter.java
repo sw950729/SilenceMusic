@@ -1,18 +1,12 @@
 package com.silence.music.adapter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.view.View;
 
 import com.angel.music.R;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.silence.music.bean.NewsBean;
 import com.silence.music.bean.ZhiHuDailyHeader;
-
-import java.util.List;
 
 /**
  * @autor :Silence
