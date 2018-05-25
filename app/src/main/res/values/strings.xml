@@ -2,4 +2,11 @@
 	<string name="app_name">Silence Music</string>
     <string name="loading">努力加载中...</string>
     <string name="daily">知乎日报</string>
+    <string name="theme">知乎主题</string>
+    <string name="hot">知乎热门</string>
+    <string name="sections">知乎专栏</string>
+    <string name="self_fm">私人FM</string>
+    <string name="recommendation">每日推荐</string>
+    <string name="music_list">歌单</string>
+    <string name="ranking_list">排行榜</string>
 </resources>
