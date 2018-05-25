@@ -3,6 +3,8 @@ package com.silence.music.main.zhihu;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.angel.music.R;
@@ -42,23 +44,20 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
         initLoadingLayout(R.id.refreshLayout);
         refreshLayout = mView.findViewById(R.id.refreshLayout);
         recycler = mView.findViewById(R.id.recycler);
-        banner = mView.findViewById(R.id.banner);
-        banner.setIndicatorGravity(BannerConfig.CENTER)
-                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+        View headerView = getActivity().getLayoutInflater().inflate(R.layout.banner_layout, (ViewGroup) refreshLayout.getParent(), false);
+        banner = headerView.findViewById(R.id.banner);
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                 .setImageLoader(new ImageLoader() {
                     @Override
                     public void displayImage(Context context, Object path, ImageView imageView) {
                         Glide.with(context)
                                 .load(path)
-                                .placeholder(R.mipmap.magic_bg)
-                                .error(R.mipmap.magic_bg)
                                 .into(imageView);
                     }
-                })
-                .isAutoPlay(true);
-
-        recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ZhiHuAdapter(mContext);
+                });
+        adapter=new ZhiHuAdapter(mContext);
+        adapter.addHeaderView(headerView);
+        recycler.setLayoutManager(new LinearLayoutManager(mContext));
         recycler.setAdapter(adapter);
         refreshLayout.setOnRefreshListener(this);
     }
@@ -96,9 +95,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
         data.add(new ZhiHuDailyHeader(isShow));
         data.addAll(bean.getStories());
         adapter.setNewData(data);
-        banner.setImages(imagesUrl)
-                .setBannerTitles(title)
-                .start();
+        banner.update(imagesUrl, title);
     }
 
     @Override
@@ -109,14 +106,16 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     @Override
     public void onStart() {
         super.onStart();
-        if (banner != null)
+        if (banner != null) {
             banner.startAutoPlay();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (banner != null)
+        if (banner != null) {
             banner.stopAutoPlay();
+        }
     }
 }

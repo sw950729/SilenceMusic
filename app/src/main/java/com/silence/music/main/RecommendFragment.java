@@ -31,16 +31,13 @@ public class RecommendFragment extends BaseFragment {
         for (int i = 0; i < 5; i++) {
             images.add(R.mipmap.magic_bg);
         }
-        banner.setIndicatorGravity(BannerConfig.CENTER)
-                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
                 .setImageLoader(new ImageLoader() {
                     @Override
                     public void displayImage(Context context, Object path, ImageView imageView) {
                         imageView.setImageResource((Integer) path);
                     }
-                }).isAutoPlay(true)
-                .setImages(images)
-                .start();
+                }).setImages(images).start();
     }
 
     @Override
@@ -61,14 +58,16 @@ public class RecommendFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (banner != null)
+        if (banner != null) {
             banner.startAutoPlay();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (banner != null)
+        if (banner != null) {
             banner.stopAutoPlay();
+        }
     }
 }
