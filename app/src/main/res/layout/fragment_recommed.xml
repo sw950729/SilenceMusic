@@ -31,28 +31,28 @@
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/self_fm"
-                app:text="私人FM" />
+                app:text="@string/self_fm" />
 
             <com.silence.music.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/recommendation"
-                app:text="每日推荐" />
+                app:text="@string/recommendation" />
 
             <com.silence.music.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/music_list"
-                app:text="歌单" />
+                app:text="@string/music_list" />
 
             <com.silence.music.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/ranking_list"
-                app:text="排行榜" />
+                app:text="@string/ranking_list" />
         </LinearLayout>
 
         <View
