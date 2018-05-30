@@ -1,7 +1,10 @@
 package com.silence.music.main.zhihu.contract;
 
 import com.silence.music.base.IView;
-import com.silence.music.bean.NewsBean;
+import com.silence.music.bean.zhihu.HotNewsBean;
+import com.silence.music.bean.zhihu.NewsBean;
+import com.silence.music.bean.zhihu.SectionBean;
+import com.silence.music.bean.zhihu.ThemesBean;
 
 /**
  * @autor :Silence
@@ -10,13 +13,18 @@ import com.silence.music.bean.NewsBean;
 public class IZhihuContract {
 
     public interface IZhihuView extends IView {
-        void showNews(NewsBean bean);
+        void showData();
 
+        void showNews(NewsBean newsBean);
+
+        void showThemes(ThemesBean themesBean);
+
+        void showHotNews(HotNewsBean hotNewsBean);
+
+        void showSection(SectionBean sectionBean);
     }
 
     public interface IZhihuPresenter {
         void getNewsData();
-
-        void getThemesData();
     }
 }

@@ -15,8 +15,11 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.silence.music.adapter.ZhiHuAdapter;
 import com.silence.music.base.BaseFragment;
-import com.silence.music.bean.NewsBean;
-import com.silence.music.bean.ZhiHuDailyHeader;
+import com.silence.music.bean.zhihu.HotNewsBean;
+import com.silence.music.bean.zhihu.NewsBean;
+import com.silence.music.bean.zhihu.SectionBean;
+import com.silence.music.bean.zhihu.ThemesBean;
+import com.silence.music.bean.zhihu.ZhiHuDailyHeader;
 import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.main.zhihu.presenter.ZhihuPresenter;
 import com.youth.banner.Banner;
@@ -55,7 +58,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
                                 .into(imageView);
                     }
                 });
-        adapter=new ZhiHuAdapter(mContext);
+        adapter = new ZhiHuAdapter();
         adapter.addHeaderView(headerView);
         recycler.setLayoutManager(new LinearLayoutManager(mContext));
         recycler.setAdapter(adapter);
@@ -78,24 +81,56 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     }
 
     @Override
-    public void showNews(NewsBean bean) {
+    public void showData() {
         refreshLayout.finishRefresh();
         if (null != mLoadingViewHelper) {
             mLoadingViewHelper.showDataView();
         }
+    }
+
+    @Override
+    public void showNews(NewsBean newsBean) {
         imagesUrl.clear();
         title.clear();
-        List<NewsBean.TopStoriesBean> topStoriesBean = bean.getTop_stories();
+        List<NewsBean.TopStoriesBean> topStoriesBean = newsBean.getTop_stories();
         for (int i = 0; i < topStoriesBean.size(); i++) {
             imagesUrl.add(topStoriesBean.get(i).getImage());
             title.add(topStoriesBean.get(i).getTitle());
         }
         List<MultiItemEntity> data = new ArrayList<>();
-        boolean isShow = bean.getStories() != null || bean.getStories().size() != 0;
+        boolean isShow = newsBean.getStories() != null || newsBean.getStories().size() != 0;
         data.add(new ZhiHuDailyHeader(isShow));
-        data.addAll(bean.getStories());
+        data.addAll(newsBean.getStories());
         adapter.setNewData(data);
         banner.update(imagesUrl, title);
+    }
+
+    @Override
+    public void showThemes(ThemesBean themesBean) {
+        List<MultiItemEntity> data = new ArrayList<>();
+        boolean isShow = themesBean.getOthers() != null || themesBean.getOthers().size() != 0;
+        data.add(new ZhiHuDailyHeader(isShow));
+        data.addAll(themesBean.getOthers());
+        adapter.setNewData(data);
+    }
+
+    @Override
+    public void showHotNews(HotNewsBean hotNewsBean) {
+        List<MultiItemEntity> data = new ArrayList<>();
+        boolean isShow = hotNewsBean.getRecent() != null || hotNewsBean.getRecent().size() != 0;
+        data.add(new ZhiHuDailyHeader(isShow));
+        data.addAll(hotNewsBean.getRecent());
+        adapter.setNewData(data);
+    }
+
+    @Override
+    public void showSection(SectionBean sectionBean) {
+        List<MultiItemEntity> data = new ArrayList<>();
+        boolean isShow = sectionBean.getData() != null || sectionBean.getData().size() != 0;
+        data.add(new ZhiHuDailyHeader(isShow));
+        data.addAll(sectionBean.getData());
+        adapter.setNewData(data);
+
     }
 
     @Override

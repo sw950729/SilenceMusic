@@ -1,9 +1,14 @@
 package com.silence.music.main.zhihu.presenter;
 
 import com.silence.music.base.BasePresenter;
-import com.silence.music.bean.NewsBean;
+import com.silence.music.bean.zhihu.HotNewsBean;
+import com.silence.music.bean.zhihu.NewsBean;
+import com.silence.music.bean.zhihu.SectionBean;
+import com.silence.music.bean.zhihu.ThemesBean;
 import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.network.RxNetWork;
+
+import rx.Observable;
 
 /**
  * @autor :Silence
@@ -19,38 +24,31 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
 
     @Override
     public void getNewsData() {
-        RxNetWork.getZhihuHttp().getNews()
-                .compose(bindLife())
-                .subscribe(bean -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-                    view.showNews(bean);
-                    getThemesData();
-                }, throwable -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-                    view.showNetError();
-                    view.showToast("服务器连接异常！");
-                });
-    }
-
-    @Override
-    public void getThemesData() {
-        RxNetWork.getZhihuHttp().getThemes()
-                .compose(bindLife())
-                .subscribe(themesBean -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-                }, throwable -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-                    view.showNetError();
-                    view.showToast("服务器连接异常！");
-                });
+        Observable<NewsBean> newsBeanObservable = RxNetWork.getZhihuHttp().getNews();
+        Observable<ThemesBean> themesBeanObservable = RxNetWork.getZhihuHttp().getThemes();
+        Observable<HotNewsBean> hotNewsBeanObservable = RxNetWork.getZhihuHttp().getHotNews();
+        Observable<SectionBean> sectionBeanObservable = RxNetWork.getZhihuHttp().getSections();
+        Observable.concat(newsBeanObservable, themesBeanObservable, hotNewsBeanObservable, sectionBeanObservable)
+                .compose(bindLife()).subscribe(object -> {
+            if (!isViewAttached()) {
+                return;
+            }
+            if (object instanceof NewsBean) {
+                view.showNews((NewsBean) object);
+            } else if (object instanceof ThemesBean) {
+                view.showThemes((ThemesBean) object);
+            } else if (object instanceof HotNewsBean) {
+                view.showHotNews((HotNewsBean) object);
+            } else if (object instanceof SectionBean) {
+                view.showSection((SectionBean) object);
+            }
+            view.showData();
+        }, throwable -> {
+            if (!isViewAttached()) {
+                return;
+            }
+            view.showToast("服务器连接异常！");
+        });
     }
 
 }

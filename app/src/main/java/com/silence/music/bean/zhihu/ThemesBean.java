@@ -1,4 +1,7 @@
-package com.silence.music.bean;
+package com.silence.music.bean.zhihu;
+
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.silence.music.adapter.ZhiHuAdapter;
 
 import java.util.List;
 
@@ -41,7 +44,7 @@ public class ThemesBean {
         this.others = others;
     }
 
-    public static class OthersBean {
+    public static class OthersBean implements MultiItemEntity {
         /**
          * color : 15007
          * thumbnail : http://pic3.zhimg.com/0e71e90fd6be47630399d63c58beebfc.jpg
@@ -94,6 +97,11 @@ public class ThemesBean {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        @Override
+        public int getItemType() {
+            return ZhiHuAdapter.THEME;
         }
     }
 }

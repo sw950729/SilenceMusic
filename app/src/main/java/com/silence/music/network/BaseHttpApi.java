@@ -1,9 +1,11 @@
 package com.silence.music.network;
 
 
-import com.silence.music.bean.NewsBean;
-import com.silence.music.bean.NewsListBean;
-import com.silence.music.bean.ThemesBean;
+import com.silence.music.bean.zhihu.HotNewsBean;
+import com.silence.music.bean.zhihu.NewsBean;
+import com.silence.music.bean.zhihu.NewsListBean;
+import com.silence.music.bean.zhihu.SectionBean;
+import com.silence.music.bean.zhihu.ThemesBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -35,11 +37,11 @@ public interface BaseHttpApi {
      * 知乎热门
      */
     @GET("news/hot")
-    Observable<String> getHotNews();
+    Observable<HotNewsBean> getHotNews();
 
     /***
      * 知乎专栏
      */
     @GET("sections")
-    Observable<String> getSections();
+    Observable<SectionBean> getSections();
 }

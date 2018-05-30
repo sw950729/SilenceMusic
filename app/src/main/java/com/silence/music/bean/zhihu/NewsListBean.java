@@ -1,4 +1,4 @@
-package com.silence.music.bean;
+package com.silence.music.bean.zhihu;
 
 import java.util.List;
 

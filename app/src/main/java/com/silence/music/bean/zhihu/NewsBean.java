@@ -1,4 +1,4 @@
-package com.silence.music.bean;
+package com.silence.music.bean.zhihu;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.silence.music.adapter.ZhiHuAdapter;
