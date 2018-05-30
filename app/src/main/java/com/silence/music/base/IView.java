@@ -20,4 +20,6 @@ public interface IView {
      * 显示吐司
      */
     void showToast(String msg);
+
+    void showNetError();
 }

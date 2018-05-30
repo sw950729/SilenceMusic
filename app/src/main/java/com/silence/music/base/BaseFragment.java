@@ -129,4 +129,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
             httpData();
         }
     }
+
+    @Override
+    public void showNetError() {
+        mLoadingViewHelper.showErrorView();
+    }
 }

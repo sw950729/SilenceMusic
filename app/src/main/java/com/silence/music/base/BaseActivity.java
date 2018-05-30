@@ -134,4 +134,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void showNetError() {
+        mLoadingViewHelper.showErrorView();
+    }
 }

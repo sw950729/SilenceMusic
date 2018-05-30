@@ -6,7 +6,9 @@ import com.angel.music.R;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.silence.music.bean.NewsBean;
 import com.silence.music.bean.ZhiHuDailyHeader;
+import com.silence.music.utils.GlideUtils;
 
 /**
  * @autor :Silence
@@ -20,7 +22,7 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
     public ZhiHuAdapter(Context context) {
         super(null);
         addItemType(TITLE, R.layout.item_zhihu_title);
-        addItemType(DAILY, R.layout.item_zhihu_title);
+        addItemType(DAILY, R.layout.item_zhihu_list);
     }
 
     @Override
@@ -30,14 +32,15 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
                 setTitle(helper, item);
                 break;
             case DAILY:
-                setDaily(helper, item);
+                setDaily(helper, (NewsBean.StoriesBean) item);
                 break;
             default:
         }
     }
 
-    private void setDaily(BaseViewHolder helper, MultiItemEntity item) {
-        helper.setVisible(R.id.layout_parent, false);
+    private void setDaily(BaseViewHolder helper, NewsBean.StoriesBean item) {
+        helper.setText(R.id.tv_title, item.getTitle());
+        GlideUtils.LoadGlideBitmap(mContext, item.getImages().get(0), helper.getView(R.id.iv_introduction));
     }
 
     private void setTitle(BaseViewHolder helper, MultiItemEntity item) {

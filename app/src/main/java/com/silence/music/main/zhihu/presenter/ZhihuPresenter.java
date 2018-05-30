@@ -1,6 +1,7 @@
 package com.silence.music.main.zhihu.presenter;
 
 import com.silence.music.base.BasePresenter;
+import com.silence.music.bean.NewsBean;
 import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.network.RxNetWork;
 
@@ -25,11 +26,31 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
                         return;
                     }
                     view.showNews(bean);
+                    getThemesData();
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;
                     }
+                    view.showNetError();
                     view.showToast("服务器连接异常！");
                 });
     }
+
+    @Override
+    public void getThemesData() {
+        RxNetWork.getZhihuHttp().getThemes()
+                .compose(bindLife())
+                .subscribe(themesBean -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showNetError();
+                    view.showToast("服务器连接异常！");
+                });
+    }
+
 }

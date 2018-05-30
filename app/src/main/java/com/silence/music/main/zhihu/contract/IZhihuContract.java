@@ -17,5 +17,6 @@ public class IZhihuContract {
     public interface IZhihuPresenter {
         void getNewsData();
 
+        void getThemesData();
     }
 }
