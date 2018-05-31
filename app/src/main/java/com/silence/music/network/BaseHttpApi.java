@@ -24,14 +24,24 @@ public interface BaseHttpApi {
     @GET("news/latest")
     Observable<NewsBean> getNews();
 
+
+    /**
+     * 日报详情
+     */
     @GET("news/{id}")
-    Observable<NewsListBean> getNewsList(@Path("id") String id);
+    Observable<NewsListBean> getNewsDetail(@Path("id") String id);
 
     /***
      * 知乎主题
      */
     @GET("themes")
     Observable<ThemesBean> getThemes();
+
+    /***
+     * 主题详情
+     */
+    @GET("theme/{id}")
+    Observable<String> getThemeDetail(@Path("id") String id);
 
     /***
      * 知乎热门
@@ -44,4 +54,10 @@ public interface BaseHttpApi {
      */
     @GET("sections")
     Observable<SectionBean> getSections();
+
+    /***
+     * 专栏详情
+     */
+    @GET("section/{id}")
+    Observable<String> getSectionDetail(@Path("id") String id);
 }
