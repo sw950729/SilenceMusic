@@ -26,8 +26,8 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     public void initView() {
-        banner = mView.findViewById(R.id.banner);
-        recycler = mView.findViewById(R.id.recycler);
+        banner = (Banner) mView.findViewById(R.id.banner);
+        recycler = (RecyclerView) mView.findViewById(R.id.recycler);
         for (int i = 0; i < 5; i++) {
             images.add(R.mipmap.magic_bg);
         }

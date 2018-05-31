@@ -22,6 +22,8 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
         this.view = view;
     }
 
+    private int count = 0;
+
     @Override
     public void getNewsData() {
         Observable<NewsBean> newsBeanObservable = RxNetWork.getZhihuHttp().getNews();
@@ -33,6 +35,8 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
             if (!isViewAttached()) {
                 return;
             }
+            count++;
+
             if (object instanceof NewsBean) {
                 view.showNews((NewsBean) object);
             } else if (object instanceof ThemesBean) {
@@ -42,7 +46,10 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
             } else if (object instanceof SectionBean) {
                 view.showSection((SectionBean) object);
             }
-            view.showData();
+            if (count == 4) {
+                view.showData();
+                count=0;
+            }
         }, throwable -> {
             if (!isViewAttached()) {
                 return;
