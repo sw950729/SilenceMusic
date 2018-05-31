@@ -4,7 +4,7 @@ import com.silence.music.base.BaseActivity;
 import com.silence.music.base.BasePresenter;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/23
  **/
 public class ZhiHuDetailActivity extends BaseActivity {

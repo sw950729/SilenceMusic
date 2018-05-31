@@ -13,11 +13,10 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp20"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/dp20">
 
         <com.angel.view.SWImageView
             android:id="@+id/iv_introduction"
@@ -28,9 +27,12 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp20"
-            android:layout_toRightOf="@+id/iv_introduction" />
-    </RelativeLayout>
+            android:layout_marginTop="8dp"
+            android:paddingLeft="@dimen/dp20"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_introduction"
+            app:layout_constraintTop_toTopOf="@+id/iv_introduction" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

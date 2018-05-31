@@ -7,7 +7,7 @@ import com.silence.music.bean.zhihu.SectionBean;
 import com.silence.music.bean.zhihu.ThemesBean;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/23
  **/
 public class IZhihuContract {

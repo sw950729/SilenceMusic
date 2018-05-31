@@ -6,7 +6,7 @@ import com.silence.music.adapter.ZhiHuAdapter;
 import java.util.List;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/30
  **/
 public class HotNewsBean {

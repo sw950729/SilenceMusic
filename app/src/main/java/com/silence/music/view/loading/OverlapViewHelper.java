@@ -24,7 +24,6 @@ public class OverlapViewHelper implements ICaseViewHelper {
             parent = view.getRootView().findViewById(android.R.id.content);
         }
 
-
         /*记录要显示的View在父View中的位置*/
         int childIndex = 0;
         int childCount = parent.getChildCount();

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.angel.music.R;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/23
  **/
 public class RecommendLayout extends FrameLayout {

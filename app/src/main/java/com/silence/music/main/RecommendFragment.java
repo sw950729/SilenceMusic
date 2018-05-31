@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/17
  **/
 public class RecommendFragment extends BaseFragment {

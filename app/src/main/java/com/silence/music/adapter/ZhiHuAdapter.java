@@ -1,9 +1,5 @@
 package com.silence.music.adapter;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-
 import com.angel.music.R;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -18,10 +14,9 @@ import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
 import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
 import com.silence.music.utils.GlideUtils;
 
-import java.util.List;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/24
  **/
 public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {
@@ -54,49 +49,48 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
                 setTitle(helper, item);
                 break;
             case DAILY:
-                setDaily(helper, (NewsBean.StoriesBean) item);
+                setImages(helper, item);
                 break;
             case THEME_TITLE:
                 setTitle(helper, item);
                 break;
             case THEME:
-                setTheme(helper, (ThemesBean.OthersBean) item);
+                setImages(helper, item);
                 break;
             case HOTNEWS_TITLE:
                 setTitle(helper, item);
                 break;
             case HOT_NEWS:
-                setHotNews(helper, (HotNewsBean.RecentBean) item);
+                setImages(helper, item);
                 break;
             case SECTION_TITLE:
                 setTitle(helper, item);
                 break;
             case SECTION:
-                setSection(helper, (SectionBean.DataBean) item);
+                setImages(helper, item);
                 break;
             default:
         }
     }
 
-    private void setSection(BaseViewHolder helper, SectionBean.DataBean item) {
-        helper.setText(R.id.tv_title, item.getName());
-        GlideUtils.LoadGlideBitmap(mContext, item.getThumbnail(), helper.getView(R.id.iv_introduction));
-    }
-
-    private void setHotNews(BaseViewHolder helper, HotNewsBean.RecentBean item) {
-        helper.setText(R.id.tv_title, item.getTitle());
-        GlideUtils.LoadGlideBitmap(mContext, item.getThumbnail(), helper.getView(R.id.iv_introduction));
-
-    }
-
-    private void setTheme(BaseViewHolder helper, ThemesBean.OthersBean item) {
-        helper.setText(R.id.tv_title, item.getName());
-        GlideUtils.LoadGlideBitmap(mContext, item.getThumbnail(), helper.getView(R.id.iv_introduction));
-    }
-
-    private void setDaily(BaseViewHolder helper, NewsBean.StoriesBean item) {
-        helper.setText(R.id.tv_title, item.getTitle());
-        GlideUtils.LoadGlideBitmap(mContext, item.getImages().get(0), helper.getView(R.id.iv_introduction));
+    private void setImages(BaseViewHolder helper, MultiItemEntity item) {
+        if (item instanceof SectionBean.DataBean) {
+            SectionBean.DataBean dataBean = (SectionBean.DataBean) item;
+            helper.setText(R.id.tv_title, dataBean.getName());
+            GlideUtils.LoadGlideBitmap(mContext, dataBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+        } else if (item instanceof HotNewsBean.RecentBean) {
+            HotNewsBean.RecentBean recentBean = (HotNewsBean.RecentBean) item;
+            helper.setText(R.id.tv_title, recentBean.getTitle());
+            GlideUtils.LoadGlideBitmap(mContext, recentBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+        } else if (item instanceof ThemesBean.OthersBean) {
+            ThemesBean.OthersBean othersBean = (ThemesBean.OthersBean) item;
+            helper.setText(R.id.tv_title, othersBean.getName());
+            GlideUtils.LoadGlideBitmap(mContext, othersBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+        } else if (item instanceof NewsBean.StoriesBean) {
+            NewsBean.StoriesBean storiesBean = (NewsBean.StoriesBean) item;
+            helper.setText(R.id.tv_title, storiesBean.getTitle());
+            GlideUtils.LoadGlideBitmap(mContext, storiesBean.getImages().get(0), helper.getView(R.id.iv_introduction));
+        }
     }
 
     private void setTitle(BaseViewHolder helper, MultiItemEntity item) {

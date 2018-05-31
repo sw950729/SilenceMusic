@@ -3,6 +3,7 @@ package com.silence.music.main.zhihu;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,29 +34,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/23
  **/
 public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhihuContract.IZhihuView, OnRefreshListener {
 
     private Banner banner;
     private SmartRefreshLayout refreshLayout;
-    private RecyclerView recycler;
     private ZhiHuAdapter adapter;
     private List<String> imagesUrl = new ArrayList<>();
     private List<String> title = new ArrayList<>();
-    private List<MultiItemEntity> dataThemes;
-    private List<MultiItemEntity> dataNews;
-    private List<MultiItemEntity> dataHotNews;
-    private List<MultiItemEntity> dataSection;
 
     @Override
     public void initView() {
         initLoadingLayout(R.id.refreshLayout);
-        refreshLayout = (SmartRefreshLayout) mView.findViewById(R.id.refreshLayout);
-        recycler = (RecyclerView) mView.findViewById(R.id.recycler);
-        View headerView = getActivity().getLayoutInflater().inflate(R.layout.banner_layout, (ViewGroup) refreshLayout.getParent(), false);
-        banner = (Banner) headerView.findViewById(R.id.banner);
+        refreshLayout = mView.findViewById(R.id.refreshLayout);
+        RecyclerView recycler = mView.findViewById(R.id.recycler);
+        View headerView = LayoutInflater.from(mContext).inflate(R.layout.banner_layout, (ViewGroup) refreshLayout.getParent(), false);
+        banner = headerView.findViewById(R.id.banner);
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                 .setImageLoader(new ImageLoader() {
                     @Override
@@ -104,43 +100,39 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
             imagesUrl.add(topStoriesBean.get(i).getImage());
             title.add(topStoriesBean.get(i).getTitle());
         }
-        dataNews = new ArrayList<>();
+        List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = newsBean.getStories() != null || newsBean.getStories().size() != 0;
-        ZhiHuDailyHeader zhiHuDailyHeader = new ZhiHuDailyHeader(isShow, ZhiHuAdapter.DAILY_TITLE);
-        dataNews.add(zhiHuDailyHeader);
-        dataNews.addAll(newsBean.getStories());
-        adapter.addData(dataNews);
+        data.add(new ZhiHuDailyHeader(isShow));
+        data.addAll(newsBean.getStories());
+        adapter.addData(data);
         banner.update(imagesUrl, title);
     }
 
     @Override
     public void showThemes(ThemesBean themesBean) {
-        dataThemes = new ArrayList<>();
+        List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = themesBean.getOthers() != null || themesBean.getOthers().size() != 0;
-        ZhiHuThemesHeader zhiHuThemesHeader = new ZhiHuThemesHeader(isShow, ZhiHuAdapter.THEME_TITLE);
-        dataThemes.add(zhiHuThemesHeader);
-        dataThemes.addAll(themesBean.getOthers());
-        adapter.addData(dataThemes);
+        data.add( new ZhiHuThemesHeader(isShow));
+        data.addAll(themesBean.getOthers());
+        adapter.addData(data);
     }
 
     @Override
     public void showHotNews(HotNewsBean hotNewsBean) {
-        dataHotNews = new ArrayList<>();
+        List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = hotNewsBean.getRecent() != null || hotNewsBean.getRecent().size() != 0;
-        ZhiHuHotNewsHeader zhiHuHotNewsHeader = new ZhiHuHotNewsHeader(isShow, ZhiHuAdapter.HOTNEWS_TITLE);
-        dataHotNews.add(zhiHuHotNewsHeader);
-        dataHotNews.addAll(hotNewsBean.getRecent());
-        adapter.addData(dataHotNews);
+        data.add( new ZhiHuHotNewsHeader(isShow));
+        data.addAll(hotNewsBean.getRecent());
+        adapter.addData(data);
     }
 
     @Override
     public void showSection(SectionBean sectionBean) {
-        dataSection = new ArrayList<>();
+        List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = sectionBean.getData() != null || sectionBean.getData().size() != 0;
-        ZhiHuSectionHeader zhiHuSectionHeader = new ZhiHuSectionHeader(isShow, ZhiHuAdapter.SECTION_TITLE);
-        dataSection.add(zhiHuSectionHeader);
-        dataSection.addAll(sectionBean.getData());
-        adapter.addData(dataSection);
+        data.add(new ZhiHuSectionHeader(isShow));
+        data.addAll(sectionBean.getData());
+        adapter.addData(data);
     }
 
     @Override

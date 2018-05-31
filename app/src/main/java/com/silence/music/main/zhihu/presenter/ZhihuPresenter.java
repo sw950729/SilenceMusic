@@ -11,7 +11,7 @@ import com.silence.music.network.RxNetWork;
 import rx.Observable;
 
 /**
- * @autor :Silence
+ * @author :Silence
  * @date :2018/5/23
  **/
 public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> implements IZhihuContract.IZhihuPresenter {
@@ -30,7 +30,7 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
         Observable<ThemesBean> themesBeanObservable = RxNetWork.getZhihuHttp().getThemes();
         Observable<HotNewsBean> hotNewsBeanObservable = RxNetWork.getZhihuHttp().getHotNews();
         Observable<SectionBean> sectionBeanObservable = RxNetWork.getZhihuHttp().getSections();
-        Observable.concat(newsBeanObservable, themesBeanObservable, hotNewsBeanObservable, sectionBeanObservable)
+        Observable.concatDelayError(newsBeanObservable, themesBeanObservable, hotNewsBeanObservable, sectionBeanObservable)
                 .compose(bindLife()).subscribe(object -> {
             if (!isViewAttached()) {
                 return;
@@ -54,6 +54,7 @@ public class ZhihuPresenter extends BasePresenter<IZhihuContract.IZhihuView> imp
             if (!isViewAttached()) {
                 return;
             }
+            view.showNetError();
             view.showToast("服务器连接异常！");
         });
     }
