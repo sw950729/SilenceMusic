@@ -20,6 +20,9 @@ import com.silence.music.bean.zhihu.NewsBean;
 import com.silence.music.bean.zhihu.SectionBean;
 import com.silence.music.bean.zhihu.ThemesBean;
 import com.silence.music.bean.zhihu.ZhiHuDailyHeader;
+import com.silence.music.bean.zhihu.ZhiHuHotNewsHeader;
+import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
+import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
 import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.main.zhihu.presenter.ZhihuPresenter;
 import com.youth.banner.Banner;
@@ -109,7 +112,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     public void showThemes(ThemesBean themesBean) {
         List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = themesBean.getOthers() != null || themesBean.getOthers().size() != 0;
-        data.add(new ZhiHuDailyHeader(isShow));
+        data.add(new ZhiHuThemesHeader(isShow));
         data.addAll(themesBean.getOthers());
         adapter.setNewData(data);
     }
@@ -118,7 +121,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     public void showHotNews(HotNewsBean hotNewsBean) {
         List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = hotNewsBean.getRecent() != null || hotNewsBean.getRecent().size() != 0;
-        data.add(new ZhiHuDailyHeader(isShow));
+        data.add(new ZhiHuHotNewsHeader(isShow));
         data.addAll(hotNewsBean.getRecent());
         adapter.setNewData(data);
     }
@@ -127,10 +130,9 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     public void showSection(SectionBean sectionBean) {
         List<MultiItemEntity> data = new ArrayList<>();
         boolean isShow = sectionBean.getData() != null || sectionBean.getData().size() != 0;
-        data.add(new ZhiHuDailyHeader(isShow));
+        data.add(new ZhiHuSectionHeader(isShow));
         data.addAll(sectionBean.getData());
         adapter.setNewData(data);
-
     }
 
     @Override

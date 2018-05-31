@@ -7,19 +7,19 @@ import com.silence.music.adapter.ZhiHuAdapter;
  * @autor :Silence
  * @date :2018/5/24
  **/
-public class ZhiHuDailyHeader implements MultiItemEntity {
+public class ZhiHuSectionHeader implements MultiItemEntity {
     private boolean isShow;
 
     public boolean isShow() {
         return isShow;
     }
 
-    public ZhiHuDailyHeader(boolean isShow) {
+    public ZhiHuSectionHeader(boolean isShow) {
         this.isShow = isShow;
     }
 
     @Override
     public int getItemType() {
-        return ZhiHuAdapter.DAILY_TITLE;
+        return ZhiHuAdapter.SECTION_TITLE;
     }
 }
