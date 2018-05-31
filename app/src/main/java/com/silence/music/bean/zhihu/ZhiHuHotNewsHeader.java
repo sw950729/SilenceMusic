@@ -9,17 +9,20 @@ import com.silence.music.adapter.ZhiHuAdapter;
  **/
 public class ZhiHuHotNewsHeader implements MultiItemEntity {
     private boolean isShow;
+    private int type;
 
     public boolean isShow() {
         return isShow;
     }
 
-    public ZhiHuHotNewsHeader(boolean isShow) {
+    public ZhiHuHotNewsHeader(boolean isShow, int type) {
         this.isShow = isShow;
+        this.type = type;
     }
 
     @Override
     public int getItemType() {
-        return ZhiHuAdapter.HOTNEWS_TITLE;
+//        return ZhiHuAdapter.HOTNEWS_TITLE;
+        return type;
     }
 }

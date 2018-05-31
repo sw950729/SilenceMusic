@@ -18,6 +18,8 @@ import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
 import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
 import com.silence.music.utils.GlideUtils;
 
+import java.util.List;
+
 /**
  * @autor :Silence
  * @date :2018/5/24

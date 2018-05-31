@@ -90,10 +90,6 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     @Override
     public void showData() {
         refreshLayout.finishRefresh();
-        adapter.setNewData(dataThemes);
-        adapter.setNewData(dataNews);
-        adapter.setNewData(dataHotNews);
-        adapter.setNewData(dataSection);
         if (null != mLoadingViewHelper) {
             mLoadingViewHelper.showDataView();
         }
@@ -110,8 +106,10 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
         }
         dataNews = new ArrayList<>();
         boolean isShow = newsBean.getStories() != null || newsBean.getStories().size() != 0;
-        dataNews.add(new ZhiHuDailyHeader(isShow));
+        ZhiHuDailyHeader zhiHuDailyHeader = new ZhiHuDailyHeader(isShow, ZhiHuAdapter.DAILY_TITLE);
+        dataNews.add(zhiHuDailyHeader);
         dataNews.addAll(newsBean.getStories());
+        adapter.addData(dataNews);
         banner.update(imagesUrl, title);
     }
 
@@ -119,27 +117,30 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
     public void showThemes(ThemesBean themesBean) {
         dataThemes = new ArrayList<>();
         boolean isShow = themesBean.getOthers() != null || themesBean.getOthers().size() != 0;
-        dataThemes.add(new ZhiHuThemesHeader(isShow));
+        ZhiHuThemesHeader zhiHuThemesHeader = new ZhiHuThemesHeader(isShow, ZhiHuAdapter.THEME_TITLE);
+        dataThemes.add(zhiHuThemesHeader);
         dataThemes.addAll(themesBean.getOthers());
-
+        adapter.addData(dataThemes);
     }
 
     @Override
     public void showHotNews(HotNewsBean hotNewsBean) {
         dataHotNews = new ArrayList<>();
         boolean isShow = hotNewsBean.getRecent() != null || hotNewsBean.getRecent().size() != 0;
-        dataHotNews.add(new ZhiHuHotNewsHeader(isShow));
+        ZhiHuHotNewsHeader zhiHuHotNewsHeader = new ZhiHuHotNewsHeader(isShow, ZhiHuAdapter.HOTNEWS_TITLE);
+        dataHotNews.add(zhiHuHotNewsHeader);
         dataHotNews.addAll(hotNewsBean.getRecent());
-
+        adapter.addData(dataHotNews);
     }
 
     @Override
     public void showSection(SectionBean sectionBean) {
         dataSection = new ArrayList<>();
         boolean isShow = sectionBean.getData() != null || sectionBean.getData().size() != 0;
-        dataSection.add(new ZhiHuSectionHeader(isShow));
+        ZhiHuSectionHeader zhiHuSectionHeader = new ZhiHuSectionHeader(isShow, ZhiHuAdapter.SECTION_TITLE);
+        dataSection.add(zhiHuSectionHeader);
         dataSection.addAll(sectionBean.getData());
-
+        adapter.addData(dataSection);
     }
 
     @Override
