@@ -23,4 +23,22 @@ public class ZhihuDetailPresenter extends BasePresenter<IZhihuDetailContract.IZh
         this.view = view;
     }
 
+    @Override
+    public void getNewsDetail(String id) {
+        RxNetWork.getZhihuHttp()
+                .getNewsDetail(id)
+                .compose(bindLife())
+                .subscribe(newsListBean -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showNewsDetail(newsListBean);
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showNetError();
+                    view.showToast("服务器连接异常！");
+                });
+    }
 }

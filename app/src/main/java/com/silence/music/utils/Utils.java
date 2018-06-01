@@ -1,6 +1,9 @@
 package com.silence.music.utils;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+
+import java.util.List;
 
 /**
  * Created by Silence on 2017/4/24.
@@ -54,5 +57,38 @@ public class Utils {
             clickTagCunt++;
         }
         return isSaved;
+    }
+
+    /**
+     * 将dip或dp值转换为px值，保证尺寸大小不变
+     *
+     * @param dipValue
+     * @return
+     */
+    public static int dip2px(Context context, float dipValue) {
+        if (context == null) {
+            return 1;
+        }
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+
+    /**
+     * 将sp值转换为px值，保证文字大小不变
+     *
+     * @param spValue
+     * @return
+     */
+    public static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    /**
+     * 判断列表是否为空
+     */
+    public static boolean isListNotEmpty(List<?> list) {
+        return list != null && list.size() > 0;
     }
 }

@@ -31,4 +31,22 @@
         <attr name="text" format="string" />
         <attr name="src" format="reference" />
     </declare-styleable>
+    <declare-styleable name="SimpleToolbar">
+        <!-- 自定义填充布局,如设置此属性，则所有布局自行填充，无返回按钮以及menu按钮 -->
+        <attr name="customLayout" format="reference" />
+        <!-- 是否显示返回按钮 -->
+        <attr name="showNavigationBar" format="boolean" />
+        <!-- 标题 -->
+        <attr name="customTitle" format="string|reference" />
+        <!-- 标题字体大小 -->
+        <attr name="customTitleTextSize" format="dimension" />
+        <!-- 标题字体颜色 -->
+        <attr name="customTitleTextColor" format="color|reference" />
+        <!-- 第一个菜单，三个菜单需按顺序添加，即menu1不为空时才能有menu2,menu1和menu2均不为空时才能有menu3 -->
+        <attr name="menu1" format="reference|string" />
+        <!-- 第二个菜单 -->
+        <attr name="menu2" format="reference|string" />
+        <!-- 第三个菜单 -->
+        <attr name="menu3" format="reference|string" />
+    </declare-styleable>
 </resources>
