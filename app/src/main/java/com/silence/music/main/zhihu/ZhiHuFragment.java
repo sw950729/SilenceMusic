@@ -1,6 +1,7 @@
 package com.silence.music.main.zhihu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.silence.music.main.zhihu.contract.IZhihuContract;
 import com.silence.music.main.zhihu.presenter.ZhihuPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -106,6 +108,12 @@ public class ZhiHuFragment extends BaseFragment<ZhihuPresenter> implements IZhih
         data.addAll(newsBean.getStories());
         adapter.addData(data);
         banner.update(imagesUrl, title);
+        banner.setOnBannerListener(position -> {
+            Intent intent=new Intent(mContext,ZhiHuDetailActivity.class);
+            intent.putExtra("type","hot");
+            intent.putExtra("id",newsBean.getTop_stories().get(position).getId()+"");
+            startActivity(intent);
+        });
     }
 
     @Override
