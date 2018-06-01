@@ -25,6 +25,7 @@
         <activity
             android:name="com.silence.music.MainActivity"
             android:hardwareAccelerated="true" />
+        <activity android:name="com.silence.music.main.zhihu.ZhiHuDetailActivity"/>
     </application>
 
 </manifest>

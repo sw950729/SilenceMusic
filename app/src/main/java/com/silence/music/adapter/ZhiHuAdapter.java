@@ -1,5 +1,7 @@
 package com.silence.music.adapter;
 
+import android.content.Intent;
+
 import com.angel.music.R;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -12,6 +14,7 @@ import com.silence.music.bean.zhihu.ZhiHuDailyHeader;
 import com.silence.music.bean.zhihu.ZhiHuHotNewsHeader;
 import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
 import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
+import com.silence.music.main.zhihu.ZhiHuDetailActivity;
 import com.silence.music.utils.GlideUtils;
 
 
@@ -78,18 +81,42 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
             SectionBean.DataBean dataBean = (SectionBean.DataBean) item;
             helper.setText(R.id.tv_title, dataBean.getName());
             GlideUtils.LoadGlideBitmap(mContext, dataBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+            helper.getView(R.id.cardview).setOnClickListener(v -> {
+                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                intent.putExtra("type", "section");
+                intent.putExtra("id", dataBean.getId()+"");
+                mContext.startActivity(intent);
+            });
         } else if (item instanceof HotNewsBean.RecentBean) {
             HotNewsBean.RecentBean recentBean = (HotNewsBean.RecentBean) item;
             helper.setText(R.id.tv_title, recentBean.getTitle());
             GlideUtils.LoadGlideBitmap(mContext, recentBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+            helper.getView(R.id.cardview).setOnClickListener(v -> {
+                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                intent.putExtra("type", "hot");
+                intent.putExtra("id", recentBean.getNews_id()+"");
+                mContext.startActivity(intent);
+            });
         } else if (item instanceof ThemesBean.OthersBean) {
             ThemesBean.OthersBean othersBean = (ThemesBean.OthersBean) item;
             helper.setText(R.id.tv_title, othersBean.getName());
             GlideUtils.LoadGlideBitmap(mContext, othersBean.getThumbnail(), helper.getView(R.id.iv_introduction));
+            helper.getView(R.id.cardview).setOnClickListener(v -> {
+                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                intent.putExtra("type", "themes");
+                intent.putExtra("id", othersBean.getId()+"");
+                mContext.startActivity(intent);
+            });
         } else if (item instanceof NewsBean.StoriesBean) {
             NewsBean.StoriesBean storiesBean = (NewsBean.StoriesBean) item;
             helper.setText(R.id.tv_title, storiesBean.getTitle());
             GlideUtils.LoadGlideBitmap(mContext, storiesBean.getImages().get(0), helper.getView(R.id.iv_introduction));
+            helper.getView(R.id.cardview).setOnClickListener(v -> {
+                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                intent.putExtra("type", "daily");
+                intent.putExtra("id", storiesBean.getId()+"");
+                mContext.startActivity(intent);
+            });
         }
     }
 
