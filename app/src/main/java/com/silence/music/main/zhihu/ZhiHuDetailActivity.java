@@ -11,13 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.angel.music.R;
-import com.silence.music.base.BaseActivity;
+import com.moudle.base.BaseActivity;
+import com.moudle.utils.GlideUtils;
+import com.moudle.utils.HtmlUtils;
+import com.moudle.view.SimpleToolbar;
 import com.silence.music.bean.zhihu.NewsListBean;
 import com.silence.music.main.zhihu.contract.IZhihuDetailContract;
 import com.silence.music.main.zhihu.presenter.ZhihuDetailPresenter;
-import com.silence.music.utils.GlideUtils;
-import com.silence.music.utils.HtmlUtils;
-import com.silence.music.view.SimpleToolbar;
 
 /**
  * @author :Silence

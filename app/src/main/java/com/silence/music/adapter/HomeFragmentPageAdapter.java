@@ -4,7 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.silence.music.base.BaseFragment;
+
+import com.moudle.base.BaseFragment;
 
 import java.util.List;
 

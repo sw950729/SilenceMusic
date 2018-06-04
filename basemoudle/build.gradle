@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField "String", "BASE_NUMBER", '"2"'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "BASE_NUMBER", '"1"'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.trello:rxlifecycle:1.0'
+    implementation 'com.trello:rxlifecycle-components:1.0'
+    //权限申请,待支持。
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    //图片加载
+    //noinspection GradleDependency
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+}

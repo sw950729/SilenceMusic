@@ -6,6 +6,7 @@ import com.angel.music.R;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.moudle.utils.GlideUtils;
 import com.silence.music.bean.zhihu.HotNewsBean;
 import com.silence.music.bean.zhihu.NewsBean;
 import com.silence.music.bean.zhihu.SectionBean;
@@ -15,7 +16,6 @@ import com.silence.music.bean.zhihu.ZhiHuHotNewsHeader;
 import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
 import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
 import com.silence.music.main.zhihu.ZhiHuDetailActivity;
-import com.silence.music.utils.GlideUtils;
 
 
 /**

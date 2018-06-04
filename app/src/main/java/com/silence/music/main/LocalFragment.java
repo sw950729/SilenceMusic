@@ -1,12 +1,12 @@
 package com.silence.music.main;
 
 import com.angel.music.R;
-import com.silence.music.base.BaseFragment;
-import com.silence.music.base.BasePresenter;
+import com.moudle.base.BaseFragment;
+import com.moudle.base.BasePresenter;
 
 /**
  * @author Silence
- * @date  2018/5/16
+ * @date 2018/5/16
  */
 public class LocalFragment extends BaseFragment {
 

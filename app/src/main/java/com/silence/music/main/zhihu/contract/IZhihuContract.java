@@ -1,6 +1,6 @@
 package com.silence.music.main.zhihu.contract;
 
-import com.silence.music.base.IView;
+import com.moudle.base.IView;
 import com.silence.music.bean.zhihu.HotNewsBean;
 import com.silence.music.bean.zhihu.NewsBean;
 import com.silence.music.bean.zhihu.SectionBean;

@@ -11,8 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.angel.music.R;
+import com.moudle.base.BaseFragment;
 import com.silence.music.adapter.HomeFragmentPageAdapter;
-import com.silence.music.base.BaseFragment;
 import com.silence.music.main.LocalFragment;
 import com.silence.music.main.RecommendFragment;
 import com.silence.music.main.zhihu.ZhiHuFragment;

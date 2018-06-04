@@ -18,28 +18,28 @@
             android:layout_marginTop="@dimen/dp30"
             android:orientation="horizontal">
 
-            <com.silence.music.view.RecommendLayout
+            <com.moudle.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/self_fm"
                 app:text="@string/self_fm" />
 
-            <com.silence.music.view.RecommendLayout
+            <com.moudle.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/recommendation"
                 app:text="@string/recommendation" />
 
-            <com.silence.music.view.RecommendLayout
+            <com.moudle.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
                 app:src="@mipmap/music_list"
                 app:text="@string/music_list" />
 
-            <com.silence.music.view.RecommendLayout
+            <com.moudle.view.RecommendLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp150"
                 android:layout_weight="1"
