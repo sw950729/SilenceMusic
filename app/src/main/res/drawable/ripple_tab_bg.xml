@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item android:color="@color/colorWhite" android:state_selected="true" />-->
-
-    <item android:state_enabled="false">
-        <shape>
-            <solid android:color="@color/colorPageBg" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape>
-            <solid android:color="@color/itemBackgroundWhite" />
-        </shape>
-    </item>
-    <item android:state_pressed="false">
-        <shape>
-            <solid android:color="@color/colorPageBg" />
-        </shape>
-    </item>
-
+    <item android:drawable="@color/translucent" android:state_enabled="false" />
+    <item android:drawable="@color/itemBackgroundWhite" android:state_pressed="true" />
+    <item android:drawable="@color/translucent" android:state_pressed="false" />
 
 </selector>

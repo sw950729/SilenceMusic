@@ -1,13 +1,16 @@
 package com.silence.music;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.FrameLayout;
+import android.view.MenuItem;
 import android.widget.RadioGroup;
 
 import com.angel.music.R;
@@ -25,13 +28,13 @@ import java.util.List;
  * @author Silence
  * @date 2018/3/21.
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private FrameLayout fl_title_menu;
     private RadioGroup rg_home_viewpager_contorl;
     private DrawerLayout dl_layout;
     private ViewPager vp_content;
     private List<BaseFragment> fragmentList = new ArrayList<>();
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initial() {
-        fl_title_menu = findViewById(R.id.fl_title_menu);
+        toolbar = findViewById(R.id.toolbar);
         rg_home_viewpager_contorl = findViewById(R.id.rg_home_viewpager_contorl);
         dl_layout = findViewById(R.id.dl_layout);
         vp_content = findViewById(R.id.vp_content);
-        fl_title_menu.setOnClickListener(this);
         fragmentList.add(new LocalFragment());
         fragmentList.add(new RecommendFragment());
         fragmentList.add(new ZhiHuFragment());
@@ -95,17 +97,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 default:
             }
         }));
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fl_title_menu:
-                dl_layout.openDrawer(GravityCompat.START);
-                break;
-            default:
-                break;
-        }
+        dl_layout.setStatusBarBackground(R.color.colorPrimary);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dl_layout, toolbar, 0, 0);
+        dl_layout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -134,4 +135,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        dl_layout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
