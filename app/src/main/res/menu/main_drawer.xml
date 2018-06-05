@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/fl_theme_color"
+            android:title="个性换肤" />
+
+        <item
+            android:id="@+id/fl_theme_singer"
+            android:title="听歌识曲" />
+
+        <item
+            android:id="@+id/fl_about_us"
+            android:title="关于" />
+
+        <item
+            android:id="@+id/fl_setting"
+            android:title="设置" />
+        <item
+            android:id="@+id/fl_feedback"
+            android:title="意见反馈" />
+        <item
+            android:id="@+id/fl_exit_app"
+            android:title="退出" />
+    </group>
+
+</menu>
