@@ -38,28 +38,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation rootProject.ext.dependencies["design"]
-    implementation rootProject.ext.dependencies["recyclerview-v7"]
-    implementation rootProject.ext.dependencies["cardview-v7"]
-    implementation rootProject.ext.dependencies["gilde"]
-    implementation rootProject.ext.dependencies["retrofit"]
-    implementation rootProject.ext.dependencies["converter-gson"]
-    implementation rootProject.ext.dependencies["adapter-rxjava"]
-    implementation rootProject.ext.dependencies["rxlifecycle"]
-    implementation rootProject.ext.dependencies["rxlifecycle-components"]
-    implementation rootProject.ext.dependencies["baseQuickHelper"]
-    implementation rootProject.ext.dependencies["smartRefreshLayout"]
-    implementation rootProject.ext.dependencies["smartHeader"]
-    implementation rootProject.ext.dependencies["crashreport"]
-    implementation rootProject.ext.dependencies["nativecrashreport"]
-    implementation rootProject.ext.dependencies["rxjava"]
-    implementation rootProject.ext.dependencies["rxandroid"]
-    implementation rootProject.ext.dependencies["okhttpLogger"]
-    implementation rootProject.ext.dependencies["constraintlayout"]
-    implementation rootProject.ext.dependencies["rxpermissions"]
-    implementation rootProject.ext.dependencies["SWImageView"]
-    implementation rootProject.ext.dependencies["rxbinding"]
-    implementation rootProject.ext.dependencies["fastjson"]
-    implementation rootProject.ext.dependencies["banner"]
+    implementation project(':apimoudle')
 }
