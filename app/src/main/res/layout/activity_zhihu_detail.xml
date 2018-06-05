@@ -35,7 +35,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/sp24" />
 
-            <com.silence.music.view.SimpleToolbar
+            <com.moudle.view.SimpleToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
