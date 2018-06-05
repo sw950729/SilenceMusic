@@ -1,6 +1,7 @@
 package com.moudle.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -91,4 +92,24 @@ public class Utils {
     public static boolean isListNotEmpty(List<?> list) {
         return list != null && list.size() > 0;
     }
+
+    /**
+     * 获取顶部状态栏高度
+     *
+     * @param activity 上下文
+     * @return
+     */
+    public static int getStatusBarHeight(Context activity) {
+        return getPixelSizeByName(activity, "status_bar_height");
+    }
+
+    private static int getPixelSizeByName(Context activity, String name) {
+        Resources resources = activity.getResources();
+        int resourceId = resources.getIdentifier(name, "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+
 }

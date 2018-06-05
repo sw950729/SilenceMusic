@@ -14,6 +14,7 @@ import com.angel.music.R;
 import com.moudle.base.BaseActivity;
 import com.moudle.utils.GlideUtils;
 import com.moudle.utils.HtmlUtils;
+import com.moudle.utils.StatusBarUtil;
 import com.moudle.view.SimpleToolbar;
 import com.silence.music.bean.zhihu.NewsListBean;
 import com.silence.music.main.zhihu.contract.IZhihuDetailContract;

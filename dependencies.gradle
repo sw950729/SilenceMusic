@@ -1,0 +1,55 @@
+def retrofitVersion = "2.2.0"
+def supportVersion = "27.0.2"
+def gildeVersion = "3.7.0"
+def rxlifecycleVersion = "1.0"
+def baseQuickHelperVersion = "2.9.34"
+def rxjavaVersion = "2.+"
+def lasterVersion = "latest.release"
+def smartRefreshVersion = "1.0.5.1"
+def okhttpLoggerVersion = "3.8.1"
+
+project.ext {
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: '27.0.3',
+            applicationId    : "com.silence.music",
+            minSdkVersion    : 21,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    dependencies = [
+            //android supprot
+            "appcompat-v7"          : "com.android.support:appcompat-v7:${supportVersion}",
+            "design"                : "com.android.support:design:${supportVersion}",
+            "recyclerview-v7"       : "com.android.support:recyclerview-v7:${supportVersion}",
+            "cardview-v7"           : "com.android.support:cardview-v7:${supportVersion}",
+            "gilde"                 : "com.github.bumptech.glide:glide:${gildeVersion}",
+            "retrofit"              : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            "converter-gson"        : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            "adapter-rxjava"        : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            "rxlifecycle"           : "com.trello:rxlifecycle:${rxlifecycleVersion}",
+            "rxlifecycle-components": "com.trello:rxlifecycle-components:${rxlifecycleVersion}",
+            "baseQuickHelper"       : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${baseQuickHelperVersion}",
+            //刷新
+            "smartRefreshLayout"    : "com.scwang.smartrefresh:SmartRefreshLayout:${smartRefreshVersion}",
+            "smartHeader"           : "com.scwang.smartrefresh:SmartRefreshHeader:${smartRefreshVersion}",
+            //bugly
+            "crashreport"           : "com.tencent.bugly:crashreport:${lasterVersion}",
+            "nativecrashreport"     : "com.tencent.bugly:nativecrashreport:${lasterVersion}",
+            "rxjava"                : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
+            "rxandroid"             : "io.reactivex.rxjava2:rxandroid:${rxjavaVersion}",
+            "okhttpLogger"          : "com.squareup.okhttp3:logging-interceptor:${okhttpLoggerVersion}",
+            //约束布局
+            "constraintlayout"      : "com.android.support.constraint:constraint-layout:1.1.0",
+            //权限申请,待支持。
+            "rxpermissions"         : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
+            //圆角图片
+            "SWImageView"           : "com.angel:SWImageView:1.0.0",
+            "rxbinding"             : "com.jakewharton.rxbinding:rxbinding:0.4.0",
+            //other
+            "fastjson"              : "com.alibaba:fastjson:1.1.64.android",
+            "banner"                : "com.youth.banner:banner:1.4.10"
+    ]
+}
