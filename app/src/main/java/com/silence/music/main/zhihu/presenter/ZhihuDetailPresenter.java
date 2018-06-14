@@ -36,4 +36,42 @@ public class ZhihuDetailPresenter extends BasePresenter<IZhihuDetailContract.IZh
                     view.showToast("服务器连接异常！");
                 });
     }
+
+    @Override
+    public void getThemeDetail(String id) {
+        RxNetWork.getZhihuHttp()
+                .getThemeDetail(id)
+                .compose(bindLife())
+                .subscribe(themeDetailBean -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showThemeDetail(themeDetailBean);
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showNetError();
+                    view.showToast("服务器连接异常！");
+                });
+    }
+
+    @Override
+    public void getSectionDetail(String id) {
+        RxNetWork.getZhihuHttp()
+                .getSectionDetail(id)
+                .compose(bindLife())
+                .subscribe(sectionDetailBean -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showSectionDetail(sectionDetailBean);
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    view.showNetError();
+                    view.showToast("服务器连接异常！");
+                });
+    }
 }
