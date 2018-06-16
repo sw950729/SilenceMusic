@@ -16,6 +16,7 @@ import com.silence.music.bean.zhihu.ZhiHuHotNewsHeader;
 import com.silence.music.bean.zhihu.ZhiHuSectionHeader;
 import com.silence.music.bean.zhihu.ZhiHuThemesHeader;
 import com.silence.music.main.zhihu.ZhiHuDetailActivity;
+import com.silence.music.main.zhihu.ZhihuThemeActivity;
 
 
 /**
@@ -82,7 +83,7 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
             helper.setText(R.id.tv_title, dataBean.getName());
             GlideUtils.LoadGlideBitmap(mContext, dataBean.getThumbnail(), helper.getView(R.id.iv_introduction));
             helper.getView(R.id.cardview).setOnClickListener(v -> {
-                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                Intent intent = new Intent(mContext, ZhihuThemeActivity.class);
                 intent.putExtra("type", "section");
                 intent.putExtra("id", dataBean.getId()+"");
                 mContext.startActivity(intent);
@@ -102,7 +103,7 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
             helper.setText(R.id.tv_title, othersBean.getName());
             GlideUtils.LoadGlideBitmap(mContext, othersBean.getThumbnail(), helper.getView(R.id.iv_introduction));
             helper.getView(R.id.cardview).setOnClickListener(v -> {
-                Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
+                Intent intent = new Intent(mContext, ZhihuThemeActivity.class);
                 intent.putExtra("type", "themes");
                 intent.putExtra("id", othersBean.getId()+"");
                 mContext.startActivity(intent);

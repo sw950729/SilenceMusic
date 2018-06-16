@@ -13,18 +13,9 @@ public class IZhihuDetailContract {
 
     public interface IZhihuDetailView extends IView {
         void showNewsDetail(NewsListBean newsListBean);
-
-        void showThemeDetail(ThemeDetailBean themeDetailBean);
-
-        void showSectionDetail(SectionDetailBean sectionDetailBean);
-
     }
 
     public interface IZhihuDetailPresenter {
         void getNewsDetail(String id);
-
-        void getThemeDetail(String id);
-
-        void getSectionDetail(String id);
     }
 }

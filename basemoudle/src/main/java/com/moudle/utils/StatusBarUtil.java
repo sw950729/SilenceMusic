@@ -47,7 +47,6 @@ public class StatusBarUtil {
         }
         return isTransparent;
     }
-
     /**
      * 设置状态栏黑色字体图标，
      * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
@@ -137,7 +136,7 @@ public class StatusBarUtil {
                 window.setAttributes(lp);
                 result = true;
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
         }
         return result;

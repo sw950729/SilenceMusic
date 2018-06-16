@@ -14,6 +14,7 @@ import com.angel.music.R;
 import com.moudle.base.BaseActivity;
 import com.moudle.utils.GlideUtils;
 import com.moudle.utils.HtmlUtils;
+import com.moudle.utils.StatusBarUtil;
 import com.moudle.view.SimpleToolbar;
 import com.silence.music.bean.zhihu.SectionDetailBean;
 import com.silence.music.bean.zhihu.ThemeDetailBean;
@@ -47,6 +48,7 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
         iv_detail_img = findViewById(R.id.iv_detail_img);
         tv_title = findViewById(R.id.iv_title);
         llback = findViewById(R.id.llBack);
+        StatusBarUtil.setTransparentStatusBar(this);
         WebSettings settings = webView.getSettings();
         settings.setAppCacheEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -70,10 +72,6 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
     public void httpData() {
         if ("daily".equals(type) || "hot".equals(type)) {
             presenter.getNewsDetail(id);
-        } else if ("themes".equals(type)) {
-            presenter.getThemeDetail(id);
-        } else if ("section".equals(type)) {
-            presenter.getSectionDetail(id);
         }
     }
 
@@ -95,17 +93,6 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
         tv_title.setText(newsListBean.getImage_source() + "");
         String htmlData = HtmlUtils.createHtmlData(newsListBean.getBody(), newsListBean.getCss(), newsListBean.getJs());
         webView.loadData(htmlData, HtmlUtils.MIME_TYPE, HtmlUtils.ENCODING);
-    }
-
-    @Override
-    public void showThemeDetail(ThemeDetailBean themeDetailBean) {
-        GlideUtils.LoadGlideBitmap(this, themeDetailBean.getImage(), iv_detail_img);
-        toolbar.setTitle(themeDetailBean.getName() + "");
-    }
-
-    @Override
-    public void showSectionDetail(SectionDetailBean sectionDetailBean) {
-
     }
 
     @Override
