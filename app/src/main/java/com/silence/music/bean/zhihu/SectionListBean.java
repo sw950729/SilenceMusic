@@ -2,7 +2,7 @@ package com.silence.music.bean.zhihu;
 
 import java.util.List;
 
-public class SectionDetailBean {
+public class SectionListBean {
 
     /**
      * timestamp : 1527289198

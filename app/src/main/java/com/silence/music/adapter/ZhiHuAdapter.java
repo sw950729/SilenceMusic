@@ -94,7 +94,6 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
             GlideUtils.LoadGlideBitmap(mContext, recentBean.getThumbnail(), helper.getView(R.id.iv_introduction));
             helper.getView(R.id.cardview).setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
-                intent.putExtra("type", "hot");
                 intent.putExtra("id", recentBean.getNews_id()+"");
                 mContext.startActivity(intent);
             });
@@ -114,7 +113,6 @@ public class ZhiHuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, Bas
             GlideUtils.LoadGlideBitmap(mContext, storiesBean.getImages().get(0), helper.getView(R.id.iv_introduction));
             helper.getView(R.id.cardview).setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, ZhiHuDetailActivity.class);
-                intent.putExtra("type", "daily");
                 intent.putExtra("id", storiesBean.getId()+"");
                 mContext.startActivity(intent);
             });

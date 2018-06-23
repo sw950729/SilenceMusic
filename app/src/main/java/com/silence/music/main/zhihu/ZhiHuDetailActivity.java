@@ -2,6 +2,7 @@ package com.silence.music.main.zhihu;
 
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -16,8 +17,6 @@ import com.moudle.utils.GlideUtils;
 import com.moudle.utils.HtmlUtils;
 import com.moudle.utils.StatusBarUtil;
 import com.moudle.view.SimpleToolbar;
-import com.silence.music.bean.zhihu.SectionDetailBean;
-import com.silence.music.bean.zhihu.ThemeDetailBean;
 import com.silence.music.bean.zhihu.NewsListBean;
 import com.silence.music.main.zhihu.contract.IZhihuDetailContract;
 import com.silence.music.main.zhihu.presenter.ZhihuDetailPresenter;
@@ -28,7 +27,6 @@ import com.silence.music.main.zhihu.presenter.ZhihuDetailPresenter;
  **/
 public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> implements IZhihuDetailContract.IZhihuDetailView, View.OnClickListener {
 
-    private String type;
     private String id;
     private WebView webView;
     private SimpleToolbar toolbar;
@@ -40,7 +38,6 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
     @Override
     public void initView() {
         if (getIntent() != null) {
-            type = getIntent().getStringExtra("type");
             id = getIntent().getStringExtra("id");
         }
         webView = findViewById(R.id.webview);
@@ -70,9 +67,7 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
 
     @Override
     public void httpData() {
-        if ("daily".equals(type) || "hot".equals(type)) {
-            presenter.getNewsDetail(id);
-        }
+        presenter.getNewsDetail(id);
     }
 
     @Override
@@ -90,7 +85,9 @@ public class ZhiHuDetailActivity extends BaseActivity<ZhihuDetailPresenter> impl
     public void showNewsDetail(NewsListBean newsListBean) {
         GlideUtils.LoadGlideBitmap(this, newsListBean.getImage(), iv_detail_img);
         toolbar.setTitle(newsListBean.getTitle() + "");
-        tv_title.setText(newsListBean.getImage_source() + "");
+        if (!TextUtils.isEmpty(newsListBean.getImage_source())) {
+            tv_title.setText(newsListBean.getImage_source());
+        }
         String htmlData = HtmlUtils.createHtmlData(newsListBean.getBody(), newsListBean.getCss(), newsListBean.getJs());
         webView.loadData(htmlData, HtmlUtils.MIME_TYPE, HtmlUtils.ENCODING);
     }

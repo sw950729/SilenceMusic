@@ -1,16 +1,16 @@
 package com.silence.music.main.zhihu.contract;
 
 import com.moudle.base.IView;
-import com.silence.music.bean.zhihu.SectionDetailBean;
-import com.silence.music.bean.zhihu.ThemeDetailBean;
+import com.silence.music.bean.zhihu.SectionListBean;
+import com.silence.music.bean.zhihu.ThemeListBean;
 
 public class IZhihuThemeContract {
 
     public  interface IZhihuThemeView extends IView{
 
-        void showThemeDetail(ThemeDetailBean themeDetailBean);
+        void showThemeDetail(ThemeListBean themeDetailBean);
 
-        void showSectionDetail(SectionDetailBean sectionDetailBean);
+        void showSectionDetail(SectionListBean sectionDetailBean);
     }
 
     public  interface IZhihuThemePresenter {

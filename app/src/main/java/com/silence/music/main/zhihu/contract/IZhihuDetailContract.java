@@ -1,8 +1,6 @@
 package com.silence.music.main.zhihu.contract;
 
 import com.moudle.base.IView;
-import com.silence.music.bean.zhihu.SectionDetailBean;
-import com.silence.music.bean.zhihu.ThemeDetailBean;
 import com.silence.music.bean.zhihu.NewsListBean;
 
 /**

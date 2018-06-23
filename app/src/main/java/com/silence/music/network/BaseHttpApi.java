@@ -1,8 +1,8 @@
 package com.silence.music.network;
 
 
-import com.silence.music.bean.zhihu.SectionDetailBean;
-import com.silence.music.bean.zhihu.ThemeDetailBean;
+import com.silence.music.bean.zhihu.SectionListBean;
+import com.silence.music.bean.zhihu.ThemeListBean;
 import com.silence.music.bean.zhihu.HotNewsBean;
 import com.silence.music.bean.zhihu.NewsBean;
 import com.silence.music.bean.zhihu.NewsListBean;
@@ -41,10 +41,10 @@ public interface BaseHttpApi {
     Observable<ThemesBean> getThemes();
 
     /***
-     * 主题详情
+     * 主题列表
      */
     @GET("theme/{id}")
-    Observable<ThemeDetailBean> getThemeDetail(@Path("id") String id);
+    Observable<ThemeListBean> getThemeDetail(@Path("id") String id);
 
     /***
      * 知乎热门
@@ -59,8 +59,8 @@ public interface BaseHttpApi {
     Observable<SectionBean> getSections();
 
     /***
-     * 专栏详情
+     * 专栏列表
      */
     @GET("section/{id}")
-    Observable<SectionDetailBean> getSectionDetail(@Path("id") String id);
+    Observable<SectionListBean> getSectionDetail(@Path("id") String id);
 }
